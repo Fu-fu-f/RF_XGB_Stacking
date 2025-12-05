@@ -3,8 +3,8 @@ import re
 from collections import defaultdict
 
 # --- Configuration Constants ---
-INPUT_PATH = '/Users/lifudu/Desktop/FYP/GitHub/Data_raw.csv'
-OUTPUT_PATH = '/Users/lifudu/Desktop/FYP/GitHub/processed_data.csv'
+INPUT_PATH = 'Data_raw.csv'
+OUTPUT_PATH = 'processed_data.csv'
 
 # Columns from the original dataframe to keep in the final output
 FINAL_COLS_TO_KEEP = ['viability', 'recovery', 'doubling time', 'cooling rate']

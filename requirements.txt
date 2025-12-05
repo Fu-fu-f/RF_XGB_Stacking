@@ -6,3 +6,4 @@ scipy
 bayesian-optimization
 openpyxl
 joblib
+scikit-optimize

@@ -1,6 +1,6 @@
 All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,recovery,Doubling time,Comments about method,Comments about results,Source (DOI link)
-1.67% Ethylene glycol + 0.0125% Taurine + 1% Ectoine,0.1,slow_freeze,0.96,0.21,Not explicitly mentioned,"Differential Evolution (DE) Algorithm-Method Extensibility,High-throughput screening: 96-well plate ,and DMSO-free","Higher viability( in Vial freezing and good recovery)  It can be optimized by adding rate of addition and removal of cryopro-tectants, temperature of nucleation, incubation time,hold temperature and more.", https://doi.org/10.1002/term.2175
-9.46% trehalose,0,slow_freeze,0.125,0,Not explicitly stated; similar cell numbers from day 1 to 14 for fresh and cryopreserved ASCs suggest comparable proliferation rates. It takes around 14 days for them to double.,"- ASCs isolated from adipose tissue was cultured to passage 2, cryopreserved for 3 months in liquid nitrogen.
+1.67% Ethylene glycol + 0.0125% Taurine + 1% Ectoine+10% DMSO,0.1,slow_freeze,0.96,0.21,Not explicitly mentioned,"Differential Evolution (DE) Algorithm-Method Extensibility,High-throughput screening: 96-well plate ,and DMSO-free","Higher viability( in Vial freezing and good recovery)  It can be optimized by adding rate of addition and removal of cryopro-tectants, temperature of nucleation, incubation time,hold temperature and more.", https://doi.org/10.1002/term.2175
+8.56% trehalose,0,slow_freeze,0.125,0,Not explicitly stated; similar cell numbers from day 1 to 14 for fresh and cryopreserved ASCs suggest comparable proliferation rates. It takes around 14 days for them to double.,"- ASCs isolated from adipose tissue was cultured to passage 2, cryopreserved for 3 months in liquid nitrogen.
 - Six CPA combinations tested using slow freezing.
 - Post-thaw, cells sub-cultured to passage 3 for assays (viability via trypan blue, phenotyping, proliferation, differentiation, stemness via Real-Time PCR).
 - Differentiation assessed by staining and gene expression (adipogenic, osteogenic, chondrogenic markers).","- Cryopreserved ASCs maintained fibroblast-like morphology, surface markers, and differentiation potential (adipogenic, osteogenic, chondrogenic) similar to fresh ASCs.
@@ -13,9 +13,9 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 10% DMSO + 20% FBS,0.1,slow_freeze,0.84,0,Not explicitly stated; similar cell numbers from day 1 to 14 for fresh and cryopreserved ASCs suggest comparable proliferation rates,,,10.1038/srep09596
 10% DMSO + 90% FBS,0.1,slow_freeze,0.82,0,Not explicitly stated; similar cell numbers from day 1 to 14 for fresh and cryopreserved ASCs suggest comparable proliferation rates,,,10.1038/srep09596
 10% fetal calf serum + 5% DMSO,0.05,slow_freeze,0.6625,0,,The cells were allowed to reach room temp so that the cryopreservant could diffuse into the cells. They were cooled down to -80C and stored in liquid nitrogen.,Standard cyropreservation procedures do not seem to be efficient for BMMeSCs. Viability assays by flow cytometry was more sensitive. Significant cell death is due to cell shrinkage and decreased nucleus to cytoplasm ratio. ,10.1016/j.transproceed.2008.03.04
-0.00038% w/w S1P + 0.90% w/w glucose + 1.71% w/w sucrose + 8.37% v/v ethylene glycol,0,slow_freeze,0.914,0,34.2,"High-standard preparation, with usage of fluorescently-labeled antibodies to ensure the pluripotent property of DP-MSCs.  Different assements method were utilized to determine the desire result, such as WST-1 assay in cell morphology, Annexin V-FITC and PI in apoptosis,  trypan blue for viablity test",S1P Pre-Treatment Reduced Actin Cytoskeletal Disruption and Improved Adhesion Ability,https://doi.org/10.3390/life13061286 
+0.00038% S1P + 0.90% glucose + 1.71% sucrose + 8.37% ethylene glycol,0,slow_freeze,0.914,0,34.2,"High-standard preparation, with usage of fluorescently-labeled antibodies to ensure the pluripotent property of DP-MSCs.  Different assements method were utilized to determine the desire result, such as WST-1 assay in cell morphology, Annexin V-FITC and PI in apoptosis,  trypan blue for viablity test",S1P Pre-Treatment Reduced Actin Cytoskeletal Disruption and Improved Adhesion Ability,https://doi.org/10.3390/life13061286 
 10% DMSO + 10% FBS,0.1,slow_freeze,0.857,0,37.63,,,https://doi.org/10.3390/life13061286 
-0.90% w/w glucose + 1.71% w/w sucrose + 8.37% v/v ethylene glycol,"0
+0.90% glucose + 1.71% sucrose + 8.37% ethylene glycol,"0
 ",slow_freeze,0.84,0,37.8,,,https://doi.org/10.3390/life13061286 
 10% Me2SO + 4% human albumin,0.1,slow_freeze,0.952,0.9,"No significant difference in Max PDT among STD10, CS2, CS10, PIM1, PIM2","- ASCs isolated from adipose tissue (lipoaspirate) of five healthy donors via collagenase digestion, cultured in DMEM with 10% pooled human platelet lysate (pHPL).
 - Cryopreserved in five media (STD10, CS2, CS10, PIM1, PIM2) at 2√ó10^6 cells/tube, frozen in a rate-controlled freezer, stored in liquid nitrogen.- - Post-thaw: viability/recovery via Acridine Orange/DAPI, proliferation via Incucyte imaging, migration via transwell assay, phenotype via flow cytometry (CD73, CD90, CD105, CD45, CD31), differentiation (adipogenic, chondrogenic), and immunomodulation (T cell suppression, IDO1/PDL1/PDL2 expression).
@@ -40,11 +40,11 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 10% DMSO + 10% FBS,0.1,multi_freeze,0.73,not mention,55.49¬±0.06 h close to the contorl (54.28¬±0.05 h),"trypan blue exclusion test utilized for the viability testing , Flow cytometry assay and Western blotting were used to confirm the pluripotency of WJMSCs , however, the result of cell counting before and after thawing haven't showed in the paper      ADMEM at room temperature and the solution was then stored at 4oC overnight to obtain a homogeneous preparation","This study compared six cryoprotectants and found that 10% DMSO + 10% FBS (Solution C) produced the best freezing results, with a high post-thaw cell survival rate (81.2%). However, removing FBS significantly reduced survival (for example, Solution D had only 6.8%), demonstrating the critical importance of FBS. Freezing increased cell apoptosis (especially Solution B, which had high BAX/p53 expression and poor survival), but did not affect stem cell appearance, markers, or differentiation ability (they could become fat cells or bone cells).",https://doi.org/10.15283/ijsc.2015.8.2.155
 10% PVP + 10% FBS,"0
 ",multi_freeze,0.74,not mention,55.13¬±0.03,,,https://doi.org/10.15283/ijsc.2015.8.2.155
-10% v/v FBS + 0.90% w/w glucose + 1.71% w/w sucrose + 8.37% v/v ethylene glycol,"0
+10% FBS + 0.90% glucose + 1.71% sucrose + 8.37% ethylene glycol,"0
 ",multi_freeze,0.66,not mention,55.79¬±0.12 h,,,https://doi.org/10.15283/ijsc.2015.8.2.155
 10% PVP,"0
 ",multi_freeze,0.4,not mention,Not mentioned,,,https://doi.org/10.15283/ijsc.2015.8.2.155
-0.90% w/w glucose + 1.71% w/w sucrose + 8.37% v/v ethylene glycol + 0% v/v FBS,"0
+0.90% glucose + 1.71% sucrose + 8.37% ethylene glycol,"0
 ",multi_freeze,0.5,not mention,Not mentioned,,,https://doi.org/10.15283/ijsc.2015.8.2.155
 10% DMSO,0.1,multi_freeze,0.58,not mention,Not mentioned,,,https://doi.org/10.15283/ijsc.2015.8.2.155
 3.5% DMSO + 1% human serum albumin + 2.5% HES,3.5% DMSO as a permeating cryoprotectant to prevent intracellular ice formation,slow_freeze,not mention,0.475,Not reported; study focused on engraftment and hematopoietic reconstitution rather than proliferation rates,"PHPCs from 302 patients (342 autografts) cryopreserved at -80¬∞C with 3.5% DMSO, 1% human serum albumin, and 2.5% HES using uncontrolled-rate freezing; post-thaw viability assessed via trypan blue and 7-AAD, CD34+ cells via ISHAGE guidelines, and clonogenic potential via CFU-GM assay.",Long-term hematopoietic reconstitution reached normal values at 12 months for 39% of patients (trilineage); 3.5% DMSO with uncontrolled-rate freezing at -80¬∞C led to satisfactory engraftment and reduced infusion toxicity compared to standard 5‚Äì10% DMSO protocols.,10.1111/j.1537-2995.2012.03768.x
@@ -59,9 +59,9 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 8% DMSO + 2% HES450,0.08,slow_freeze,1,not mention,Not mentioned,,,doi:10.1186/1472-6750-12-57
 9% DMSO + 1% HES450,0.09,slow_freeze,0.8,not mention,Not mentioned,,,doi:10.1186/1472-6750-12-58
 10% DMSO,0.1,slow_freeze,0.9,not mention,Not mentioned,,,doi:10.1186/1472-6750-12-59
-6.85% w/w sucrose + 10% v/v PL,"0
+6.85% sucrose + 10% PL,"0
 ",slow_freeze,0.58,0.55,42.0 ¬± 4.8 h,"There are two main process in this experiment 1: find out the optimal concentration of crypprotectant (sucrose 200mM) through pretrement 2:compare the viability, recovery,PDT, Adipogenic differentiation and Osteogenic differentiation ability of different pretrement soultion affect on the ASCs.","The result showed during cryopreservation, their presence only outside the cellsnhas been shown to be insufficient for obtaining satisfactory results. Sugar is required in both the intra and extracellular compartments. The optimal sucrose concentrations for the preservation of ASCs were 100 mM. In general, the presented DMSO-free/xeno-free ASCs preparation process allows preserving about 60% of cells after cryopreservation in the absence of DMSO and FS.",https://doi.org/10.1007/s10616-016-0055-2
-6.85% w/w sucrose + 10% v/v FS,"0
+6.85% sucrose + 10% FS,"0
 ",slow_freeze,0.45,0.45,89.2 ¬± 4.3 h,,,
 30% FBS + 5% DMSO,0.05,slow_freeze,0.8507,not mention,Not mentioned,Flow cytometry was used to evaluate cell viability. The cells were stained with Annexin-V and DAPI. Annexin-/DAPI- were considered viable,"The results showed that as concentration of DMSO increased, viability increased, however >10% viability decreased. Also as higher concentration of DMSO may cause side-effects in patients, 5% DMSO should be used.",http://dx.doi.org/10.1016/j.jcyt.2016.04.005
 4.5% HAS,0,slow_freeze,0.0516,not mention,Not mentioned,,,
@@ -73,21 +73,21 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 10% DMSO + 90% HAS,0.1,slow_freeze,0.885,not mention,Not mentioned,,,
 15% DMSO + 85% HAS,0.15,slow_freeze,0.706,not mention,Not mentioned,,,
 20% DMSO + 80% HAS,0.2,slow_freeze,0.641,not mention,Not mentioned,,,
-11.29% Trehalose,0,slow_freeze,0.47,not mention,Not mentioned,Trypan blue staining was used to evaluate cell viability. Colorimetric asessment at 450 nm was used to obtain OD value to represent cell proliferation. FACS cytometer was used for asessment of cell markers.,"The study found that CPA combination of Trehalose and glycerol improves viability, proliferation and migration compared to Trehalose or Glycerol alone, and comparable to DMSO + FBS. Cells cryopreserved in Trehalose and glycerol also express the same surface markers and exhibit the same multi-lineage differentation potential as DMSO + FBS and fresh cells.",https://doi.org/10.1186/s13287-020-01969-0
-22.59% Trehalose,0,slow_freeze,0.56,not mention,Not mentioned,,,
-37.63% Trehalose,0,slow_freeze,0.65,not mention,Not mentioned,,,
-47.06% Trehalose,0,slow_freeze,0.58,not mention,Not mentioned,,,
+10.27% Trehalose,0,slow_freeze,0.47,not mention,Not mentioned,Trypan blue staining was used to evaluate cell viability. Colorimetric asessment at 450 nm was used to obtain OD value to represent cell proliferation. FACS cytometer was used for asessment of cell markers.,"The study found that CPA combination of Trehalose and glycerol improves viability, proliferation and migration compared to Trehalose or Glycerol alone, and comparable to DMSO + FBS. Cells cryopreserved in Trehalose and glycerol also express the same surface markers and exhibit the same multi-lineage differentation potential as DMSO + FBS and fresh cells.",https://doi.org/10.1186/s13287-020-01969-0
+20.54% Trehalose,0,slow_freeze,0.56,not mention,Not mentioned,,,
+34.23% Trehalose,0,slow_freeze,0.65,not mention,Not mentioned,,,
+42.79% Trehalose,0,slow_freeze,0.58,not mention,Not mentioned,,,
 10% Glycerol,0,slow_freeze,0.54,not mention,Not mentioned,,,
 20% Glycerol,0,slow_freeze,0.63,not mention,Not mentioned,,,
 30% Glycerol,0,slow_freeze,0.5,not mention,Not mentioned,,,
-37.63% w/w Trehalose + 20% v/v Glycerol,0,slow_freeze,0.77,not mention,Not mentioned,,,
+32.23% Trehalose + 20% Glycerol,0,slow_freeze,0.77,not mention,Not mentioned,,,
 10% DMSO + 90% FBS,0.1,slow_freeze,0.75,not mention,Not mentioned,,,
 10% DMSO,0.1,slow_freeze,0.8,not mention,Not mentioned,"The study used two types of culture, feeder dependent and independent. For both types, no significant difference was observed in viability across all solutions except for 10% PROH. PI viability, colony count (4-5 days), Annexin V/PI apoptosis, caspase-9, DHE ROS, F-actin, ICC (Oct4/Nanog/SSEA4/Tra1-60/Tra1-81)",The results of viabilty implies that low  cell recovery after slow-freezing cryopreservation is associated with apoptosis rather than necrosis induced by cryoinjury. ,10.1002/btpr.358
-10% v/v DMSO + 0.00078% w/w ROCK inhibitor,0.1,slow_freeze,0.82,not mention,Not mentioned,,,
+10% DMSO + 0.0003383% ROCK inhibitor,0.1,slow_freeze,0.82,not mention,Not mentioned,,,
 7.5% DMSO,0.075,slow_freeze,0.84,not mention,Not mentioned,,,
-7.5% v/v DMSO + 0.00078% w/w ROCK inhibitor,0.075,slow_freeze,0.76,not mention,Not mentioned,,,
+7.5% DMSO + 0.0003383% ROCK inhibitor,0.075,slow_freeze,0.76,not mention,Not mentioned,,,
 7.5% DMSO + 2.5% PEG,0.075,slow_freeze,0.87,not mention,Not mentioned,,Optimal reduced DMSO.,
-7.5% DMSO + 2.5% PEG + 0.00078% ROCK inhibitor,0.075,slow_freeze,0.85,not mention,Not mentioned,,,
+7.5% DMSO + 2.5% PEG + 0.0003383% ROCK inhibitor,0.075,slow_freeze,0.85,not mention,Not mentioned,,,
 10% PROH,0,slow_freeze,0.56,not mention,Not mentioned,,,
 7.5% PROH + 2.5% PEG,0,slow_freeze,0.74,not mention,Not mentioned,,,
 10% DMSO + 30% FBS,0.1,slow_freeze,0.92,0.51,Not measrued ,Trypan blue exclusion test was used for cell viability and cell recovery usind 2 equations. Flow cytometry was used to assess stem cell surface markers that indicate multipotency. ,"Polyampholyte rescues low-DMSO cryopreservation; retains cell size/granularity, multipotency markers (no significant change vs. controls), and multilineage differentiation; scalable GMP synthesis; reduces clinical toxicity risks","https://dx.doi.org/10.1021/acsabm.0c00638
@@ -98,10 +98,10 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 20% FBS + 10% DMSO,0.1,slow_freeze,0.95,not mention,30 ¬± 4 hours ,,,
 20% FBS + 5% Glycerol,0,slow_freeze,0.78,not mention,30 ¬± 4 hours ,,,
 20% FBS + 10% Glycerol,0,slow_freeze,0.83,not mention,30 ¬± 4 hours ,,,
-20% FBS + 1.71% sucrose,0,slow_freeze,0.21,not mention,30 ¬± 4 hours ,,,
-20% FBS + 3.42% sucrose,0,slow_freeze,0.28,not mention,30 ¬± 4 hours ,,,
-20% FBS + 2.84% trehalose,0,slow_freeze,0.36,not mention,30 ¬± 4 hours ,,,
-20% FBS + 5.66% trehalose,0,slow_freeze,0.38,not mention,30 ¬± 4 hours ,,,
+20% FBS + 1.03% sucrose,0,slow_freeze,0.21,not mention,30 ¬± 4 hours ,,,
+20% FBS + 2.05% sucrose,0,slow_freeze,0.28,not mention,30 ¬± 4 hours ,,,
+20% FBS + 2.05% trehalose,0,slow_freeze,0.36,not mention,30 ¬± 4 hours ,,,
+20% FBS + 3.42% trehalose,0,slow_freeze,0.38,not mention,30 ¬± 4 hours ,,,
 10% DMSO + 10% FBS,0.1,slow_freeze,0.297,not mention,Not reported,PI staining for dead cells and Hoechst staining for all cells to assess viability. MTT assays carried out for cell proliferation after cryopreservation and compared with fresh. ,"Cocktail solution in programmed cooling showed highest viability, similar cell proliferation as fresh cells and stemness maintained. ",10.1002/term.1945
 0.90% glucose + 1.71% sucrose + 8.37% ethylene glycol,0,slow_freeze,0.327,not mention,Not reported,,,
 10% DMSO + 10% FBS,0.1,multi_freeze,0.353,not mention,Not reported,,,
@@ -121,12 +121,12 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 20% PVP + 10% FCS,0,slow_freeze,0.643,not mention,Not mentioned,,,
 10% PVP + 40% FCS,0,slow_freeze,0.705,not mention,Not mentioned,,,
 10% PVP + 80% FCS,0,slow_freeze,0.725,not mention,Not mentioned,,,
-8.37% ethylene glycol ,0,slow_freeze,0.65,not mention,Not mentioned ,DPSC cell lines from four separate  cultures were used.  Viability was determined by trypan blue exclusion after thawing.,The freezing effect of 1.0M and 1.5M Me‚ÇÇSO was significantly better than that of EG or PG at the same concentration. There was no significant difference between the two concentrations.,https://doi.org/10.1016/j.cryobiol.2009.06.005
-16.74% ethylene glycol ,0,slow_freeze,0.75,not mention,Not mentioned ,,,
-25.11% ethylene glycol,0,slow_freeze,0.77,not mention,Not mentioned ,,,
-7.61% propylene glycol,0,slow_freeze,0.43,not mention,Not mentioned ,,,
-15.22%  propylene glycol,0,slow_freeze,0.68,not mention,Not mentioned ,,,
-22.83%  propylene glycol ,0,slow_freeze,0.67,not mention,Not mentioned ,,,
+2.80% ethylene glycol ,0,slow_freeze,0.65,not mention,Not mentioned ,DPSC cell lines from four separate  cultures were used.  Viability was determined by trypan blue exclusion after thawing.,The freezing effect of 1.0M and 1.5M Me‚ÇÇSO was significantly better than that of EG or PG at the same concentration. There was no significant difference between the two concentrations.,https://doi.org/10.1016/j.cryobiol.2009.06.005
+5.58% ethylene glycol ,0,slow_freeze,0.75,not mention,Not mentioned ,,,
+8.37% ethylene glycol,0,slow_freeze,0.77,not mention,Not mentioned ,,,
+3.67% propylene glycol,0,slow_freeze,0.43,not mention,Not mentioned ,,,
+7.35%  propylene glycol,0,slow_freeze,0.68,not mention,Not mentioned ,,,
+11.02%  propylene glycol ,0,slow_freeze,0.67,not mention,Not mentioned ,,,
 7.81% DMSO ,0.1,slow_freeze,0.74,not mention,Not mentioned ,,,
 15.63% DMSO ,0.1,slow_freeze,0.906,not mention,Not mentioned ,,,
 23.44% DMSO ,0.1,slow_freeze,0.91,not mention,Not mentioned ,,,
@@ -155,69 +155,69 @@ All ingredients in cryoprotective solution,DMSO usage,cooling rate,viability,rec
 2.5% DMSO + 7.5% PEG + 2% BSA,0.025,slow_freeze,0.38,not mention,Not mentioned ,,,
 "10% 1,2-propanediol + 2% BSA",0,slow_freeze,0.68,not mention,Not mentioned ,,,
 "7.5% 1,2-propanediol + 2.5% PEG + 2% BSA",0,multi_freeze,0.73,not mention,Not mentioned ,,,
-5.13% Sucrose + 2.27% Mannitol + 0.16% Creatine,0,multi_freeze,not mention,0.48,Not mentioned ,Acridine Orange/Propidium Iodide (AO/PI) and flow cytometry were used to calculate the viability (recovery rate) and Cell surface phenotype respectively.,"The result showed the recovery rate of SMC (sucrose= 150 mM, mannitol= 125 mM, creatine= 12.5 mM) reached the highest level at 2 hours and SGC (sucrose= 150 mM, glycerol= 2.5%, creatine= 12.5 mM) at 1 hour of incubation, and then decreased after 4 hours. Moreover, substituting glucose for sucrose significantly reduced the recovery rate.",https://doi.org/10.1089/TEN.TEC.2016.0284
-2.70% Glucose + 2.27% Mannitol + 0.16% Creatine,0,multi_freeze,not mention,0.32,Not mentioned ,,,
-5.13% Sucrose + 2.5% Glycerol + 0.16% Creatine,0,multi_freeze,not mention,0.62,Not mentioned ,,,
+5.14% Sucrose + 2.28% Mannitol + 0.16% Creatine,0,multi_freeze,not mention,0.48,Not mentioned ,Acridine Orange/Propidium Iodide (AO/PI) and flow cytometry were used to calculate the viability (recovery rate) and Cell surface phenotype respectively.,"The result showed the recovery rate of SMC (sucrose= 150 mM, mannitol= 125 mM, creatine= 12.5 mM) reached the highest level at 2 hours and SGC (sucrose= 150 mM, glycerol= 2.5%, creatine= 12.5 mM) at 1 hour of incubation, and then decreased after 4 hours. Moreover, substituting glucose for sucrose significantly reduced the recovery rate.",https://doi.org/10.1089/TEN.TEC.2016.0284
+2.70% Glucose + 2.28% Mannitol + 0.16% Creatine,0,multi_freeze,not mention,0.32,Not mentioned ,,,
+5.14% Sucrose + 2.5% Glycerol + 0.16% Creatine,0,multi_freeze,not mention,0.62,Not mentioned ,,,
 2.70% Glucose + 2.5% Glycerol + 0.16% Creatine,0,multi_freeze,not mention,0.52,Not mentioned ,,,
-5.13% Sucrose + 19.06% Glycerol + 0.16% Creatine,0,multi_freeze,0.6,not mention,Not mentioned ,,,
-2.70% Glucose + 19.06% Glycerol + 0.16% Creatine,0,multi_freeze,0.4,not mention,Not mentioned ,,,
-5.13% Sucrose + 38.12% Glycerol + 0.33% Creatine,0,multi_freeze,0.7,0.82,Not mentioned ,,,
-10.26% Sucrose + 38.12% Glycerol + 0.16% Creatine,0,multi_freeze,0,0.71,Not mentioned ,,,
+5.14% Sucrose + 25% Glycerol + 0.16% Creatine,0,multi_freeze,0.6,not mention,Not mentioned ,,,
+2.70% Glucose + 25% Glycerol + 0.16% Creatine,0,multi_freeze,0.4,not mention,Not mentioned ,,,
+5.14% Sucrose + 50% Glycerol + 0.33% Creatine,0,multi_freeze,0.7,0.82,Not mentioned ,,,
+10.27% Sucrose + 50% Glycerol + 0.16% Creatine,0,multi_freeze,0,0.71,Not mentioned ,,,
 1.28% Sucrose + 1.15% Mannitol + 0.17% Creatine,0,multi_freeze,not mention,0.47,Not mentioned ,,,
 7.70% Sucrose + 3.42% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.43,Not mentioned ,,,
-7.70% Sucrose + 2.27% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.29,Not mentioned ,,,
+7.68% Sucrose + 2.28% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.29,Not mentioned ,,,
 0% Sucrose + 1.15% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.54,Not mentioned ,,,
-1.28% Sucrose + 2.27% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.48,Not mentioned ,,,
-0.51% Sucrose + 0.46% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
-7.70% Sucrose + 3.42% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.46,Not mentioned ,,,
-5.13% Sucrose + 1.15% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.41,Not mentioned ,,,
+2.57% Sucrose + 2.28% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.48,Not mentioned ,,,
+1.03% Sucrose + 0.46% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
+7.68% Sucrose + 3.42% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.46,Not mentioned ,,,
+5.14% Sucrose + 1.15% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.41,Not mentioned ,,,
 0% Sucrose + 0.46% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.52,Not mentioned ,,,
-1.28% Sucrose + 1.15% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.38,Not mentioned ,,,
+2.57% Sucrose + 1.15% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.38,Not mentioned ,,,
 0.51% Sucrose + 0% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.29,Not mentioned ,,,
 0.85% Sucrose + 1.15% Mannitol + 0.17% Creatine,0,multi_freeze,not mention,0.37,Not mentioned ,,,
-5.13% Sucrose + 1.15% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.22,Not mentioned ,,,
-0.51% Sucrose + 0.46% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
-10.26% Sucrose + 2.29% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.09,Not mentioned ,,,
-5.13% Sucrose + 3.42% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.49,Not mentioned ,,,
-0.51% Sucrose + 0.46% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.2,Not mentioned ,,,
-5.13% Sucrose + 0.46% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
-0% Sucrose + 2.27% Mannitol + 0.17% Creatine,0,multi_freeze,not mention,0.32,Not mentioned ,,,
-5.13% Sucrose + 1.15% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.34,Not mentioned ,,,
-0.51% Sucrose + 1.15% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.47,Not mentioned ,,,
-0.51% Sucrose + 2.27% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
-10.26% Sucrose + 2.29% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.15,Not mentioned ,,,
-5.13% Sucrose + 3.42% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.26,Not mentioned ,,,
-7.70% Sucrose + 2.29% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.19,Not mentioned ,,,
-7.70% Sucrose + 38.12% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.94,Not mentioned ,,,
-10.26% Sucrose + 19.06% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.78,Not mentioned ,,,
-10.26% Sucrose + 19.06% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,1.02,Not mentioned ,,,
-10.26% Sucrose + 0% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.78,Not mentioned ,,,
-10.26% Sucrose + 9.53% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.59,Not mentioned ,,,
-0% Sucrose + 38.12% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.64,Not mentioned ,,,
-1.28% Sucrose + 3.77% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.53,Not mentioned ,,,
-0.51% Sucrose + 9.53% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.36,Not mentioned ,,,
-0.85% Sucrose + 3.77% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.38,Not mentioned ,,,
-1.28% Sucrose + 38.12% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.67,Not mentioned ,,,
-0% Sucrose + 38.12% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.76,Not mentioned ,,,
-5.13% Sucrose + 29.18% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.68,Not mentioned ,,,
-0.51% Sucrose + 3.77% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
-7.70% Sucrose + 29.18% Glycerol + 0.08% Creatine,0,multi_freeze,not mention,0.44,Not mentioned ,,,
-1.28% Sucrose + 38.12% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.46,Not mentioned ,,,
-0% Sucrose + 41.94% Glycerol + 0.32% Creatine,0,multi_freeze,not mention,1.13,Not mentioned ,,,
-0.85% Sucrose + 29.18% Glycerol + 0% Creatine,0,multi_freeze,not mention,1.1,Not mentioned ,,,
-7.70% Sucrose + 19.06% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.55,Not mentioned ,,,
-10.26% Sucrose + 29.18% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.54,Not mentioned ,,,
-5.13% Sucrose + 38.12% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.43,Not mentioned ,,,
-0% Sucrose + 9.53% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.58,Not mentioned ,,,
-5.13% Sucrose + 38.12% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.54,Not mentioned ,,,
-0% Sucrose + 3.77% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
-5.13% Sucrose + 19.06% Glycerol + 0.08% Creatine,0,multi_freeze,not mention,0.3,Not mentioned ,,,
-0.51% Sucrose + 38.12% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.45,Not mentioned ,,,
-0% Sucrose + 3.77% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.21,Not mentioned ,,,
-0.51% Sucrose + 9.53% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.39,Not mentioned ,,,
-5.13% Sucrose + 3.77% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.68,Not mentioned ,,,
-0.51% Sucrose + 38.12% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.43,Not mentioned ,,,
-0.51% Sucrose + 9.53% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.41,Not mentioned ,,,
+5.14% Sucrose + 1.15% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.22,Not mentioned ,,,
+1.03% Sucrose + 0.46% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
+10.27% Sucrose + 4.55% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.09,Not mentioned ,,,
+5.14% Sucrose + 3.42% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.49,Not mentioned ,,,
+1.03% Sucrose + 0.46% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.2,Not mentioned ,,,
+5.14% Sucrose + 0.46% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
+0% Sucrose + 2.28% Mannitol + 0.17% Creatine,0,multi_freeze,not mention,0.32,Not mentioned ,,,
+5.14% Sucrose + 1.15% Mannitol + 0.08% Creatine,0,multi_freeze,not mention,0.34,Not mentioned ,,,
+1.03% Sucrose + 1.15% Mannitol + 0.33% Creatine,0,multi_freeze,not mention,0.47,Not mentioned ,,,
+1.03% Sucrose + 2.28% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
+10.27% Sucrose + 4.55% Mannitol + 0% Creatine,0,multi_freeze,not mention,0.15,Not mentioned ,,,
+5.14% Sucrose + 3.42% Mannitol + 0.25% Creatine,0,multi_freeze,not mention,0.26,Not mentioned ,,,
+7.70% Sucrose + 4.55% Mannitol + 0.04% Creatine,0,multi_freeze,not mention,0.19,Not mentioned ,,,
+7.70% Sucrose + 6.30% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.94,Not mentioned ,,,
+10.27% Sucrose + 3.15% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.78,Not mentioned ,,,
+10.27% Sucrose + 3.15% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,1.02,Not mentioned ,,,
+10.27% Sucrose + 0% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.78,Not mentioned ,,,
+10.27% Sucrose + 1.57% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.59,Not mentioned ,,,
+0% Sucrose + 6.30% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.64,Not mentioned ,,,
+2.57% Sucrose + 0.63% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.53,Not mentioned ,,,
+1.03% Sucrose + 1.57% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.36,Not mentioned ,,,
+1.71% Sucrose + 0.63% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.38,Not mentioned ,,,
+2.57% Sucrose + 6.30% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.67,Not mentioned ,,,
+0% Sucrose + 6.30% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.76,Not mentioned ,,,
+5.14% Sucrose + 4.72% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.68,Not mentioned ,,,
+1.03% Sucrose + 0.63% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.31,Not mentioned ,,,
+7.70% Sucrose + 4.72% Glycerol + 0.08% Creatine,0,multi_freeze,not mention,0.44,Not mentioned ,,,
+2.57% Sucrose + 6.30% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.46,Not mentioned ,,,
+0% Sucrose + 6.95% Glycerol + 0.31% Creatine,0,multi_freeze,not mention,1.13,Not mentioned ,,,
+1.71% Sucrose + 4.72% Glycerol + 0% Creatine,0,multi_freeze,not mention,1.1,Not mentioned ,,,
+7.70% Sucrose + 3.15% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.55,Not mentioned ,,,
+10.27% Sucrose + 4.72% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.54,Not mentioned ,,,
+5.14% Sucrose + 6.30% Glycerol + 0.04% Creatine,0,multi_freeze,not mention,0.43,Not mentioned ,,,
+0% Sucrose + 1.57% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.58,Not mentioned ,,,
+5.14% Sucrose + 6.30% Glycerol + 0% Creatine,0,multi_freeze,not mention,0.54,Not mentioned ,,,
+0% Sucrose + 0.63% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.33,Not mentioned ,,,
+5.14% Sucrose + 3.15% Glycerol + 0.08% Creatine,0,multi_freeze,not mention,0.3,Not mentioned ,,,
+1.03% Sucrose + 6.30% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.45,Not mentioned ,,,
+0% Sucrose + 0.63% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.21,Not mentioned ,,,
+1.03% Sucrose + 1.57% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.39,Not mentioned ,,,
+5.14% Sucrose + 0.63% Glycerol + 0.17% Creatine,0,multi_freeze,not mention,0.68,Not mentioned ,,,
+1.03% Sucrose + 6.30% Glycerol + 0.25% Creatine,0,multi_freeze,not mention,0.43,Not mentioned ,,,
+1.03% Sucrose + 1.57% Glycerol + 0.33% Creatine,0,multi_freeze,not mention,0.41,Not mentioned ,,,
 10 wt% PEG 400,0,slow_freeze,not mention,0.05,Not mentioned ,"Trypan blue and CCK-8 assay was utilized to quantify cell viability and cytotoxicity. Alizarin Red staining, Oil Red O staining, and Alcian Blue staining were employed to confirm the ability of osteogenic differentiation, adipogenic differentiation, chondrogenic differentiation respectively.","The result showed the 2h pretreatment of 400KDa-600KDa PEG and 0h pretreatment of middle range of molecular weight of PEG (1K, 1.5K, 5K Da) can improve the recovery rate of MSCs in cryoprotectant.",https://doi.org/10.1186/s40824-023-00356-z
 10 wt% PEG 600,0,slow_freeze,not mention,0.05,Not mentioned ,,,
 10 wt% PEG 1K,0,slow_freeze,not mention,0.35,Not mentioned ,,,
@@ -276,21 +276,21 @@ Higher percentage of dead cells at 0 mM trehalose compared to trehalose + dextra
 Standard MSC cryopreservation protocol; no UMT treatment for this cryosoup","Effective CPA, maintains viability and pluripotency; higher trehalose concentrations (250‚Äì750 mM) optimal
 Higher percentage of dead cells at 0 mM trehalose compared to trehalose + dextran; DMSO is cytotoxic",https://doi.org/10.1038/s44172-024-00239-0
 10% DMSO + 90% FBS,0.1,slow_freeze,not mention,not mention,Not mentioned ,,,
-7.1% DMSO + 5.91% Acetamide + 22.0% Propylene glycol,0.2,slow_freeze,0.77,not mention,Not mentioned ,"MSC monolayers were first cultured in Equilibrium solution for 10 mins before vitrification. Vitrification solution added for 5 mins, removed by aspiration. Warmed by added warm rewarming solution. Trypan blue exclusion for quantitative viability after dispersal. Annexin V-FITC / PI staining to assess apoptosis vs necrosis. Cell Counting Kit-8 (CCK-8) for cell proliferation (read at 450 nm).","COOH-PLL (polyampholyte) strongly stabilised the glassy state, reduced devitrification and cytotoxicity, and inhibited apoptosis. P-VS (EG + sucrose + 10% COOH-PLL) produced the best outcomes: lowest apoptosis (Annexin V), highest viability after warming and 1 day culture, and preserved proliferation and osteogenic/adipogenic differentiation. Slow vitrification (even at 4.9 ¬∞C/min) became feasible with COOH-PLL ‚Äî advantage for fragile 2D constructs because it avoids mechanical stresses of direct immersion.",DOI: 10.1021/acsbiomaterials.6b00150
-36.4% EG + 17.1% Sucrose,0,slow_freeze,0.5,not mention,Not mentioned ,,,
-36.4% EG + 10% COOH-PLL + 17.1% Sucrose,0,slow_freeze,0.95,not mention,Not mentioned ,,,
-7.1% DMSO + 5.91% Acetamide + 22.0% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
-36.4% EG + 17.1% Sucrose,0,slow_freeze,0.95,not mention,Not mentioned ,,,
-36.4% EG + 10% COOH-PLL + 17.1% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
-7.1% DMSO + 5.91% Acetamide + 22.0% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
-36.4% EG + 17.1% Sucrose,0,slow_freeze,0.98,not mention,Not mentioned ,,,
-36.4% EG + 10% COOH-PLL + 17.1% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
-7.1% DMSO + 5.91% Acetamide + 22.0% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
-36.4% EG + 17.1% Sucrose,0,slow_freeze,0.98,not mention,Not mentioned ,,,
-36.4% EG + 10% COOH-PLL + 17.1% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
-7.1% DMSO + 5.91% Acetamide + 22.0% Propylene glycol,0.2,rapid_freeze,0.85,not mention,Not mentioned ,,,
-36.4% EG + 17.1% Sucrose,0,rapid_freeze,0.98,not mention,Not mentioned ,,,
-36.4% EG + 10% COOH-PLL + 17.1% Sucrose,0,rapid_freeze,1,not mention,Not mentioned ,,,
+9.2% DMSO + 7.9% acetamide + 22.5% Propylene glycol,0.2,slow_freeze,0.77,not mention,Not mentioned ,"MSC monolayers were first cultured in Equilibrium solution for 10 mins before vitrification. Vitrification solution added for 5 mins, removed by aspiration. Warmed by added warm rewarming solution. Trypan blue exclusion for quantitative viability after dispersal. Annexin V-FITC / PI staining to assess apoptosis vs necrosis. Cell Counting Kit-8 (CCK-8) for cell proliferation (read at 450 nm).","COOH-PLL (polyampholyte) strongly stabilised the glassy state, reduced devitrification and cytotoxicity, and inhibited apoptosis. P-VS (EG + sucrose + 10% COOH-PLL) produced the best outcomes: lowest apoptosis (Annexin V), highest viability after warming and 1 day culture, and preserved proliferation and osteogenic/adipogenic differentiation. Slow vitrification (even at 4.9 ¬∞C/min) became feasible with COOH-PLL ‚Äî advantage for fragile 2D constructs because it avoids mechanical stresses of direct immersion.",DOI: 10.1021/acsbiomaterials.6b00150
+47.6% EG + 1.71% Sucrose,0,slow_freeze,0.5,not mention,Not mentioned ,,,
+47.6% EG + 10% COOH-PLL + 1.71% Sucrose,0,slow_freeze,0.95,not mention,Not mentioned ,,,
+9.2% DMSO + 7.9% acetamide + 22.5% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
+47.6% EG + 1.71% Sucrose,0,slow_freeze,0.95,not mention,Not mentioned ,,,
+47.6% EG + 10% COOH-PLL + 1.71% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
+9.2% DMSO + 7.9% acetamide + 22.5% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
+47.6% EG + 1.71% Sucrose,0,slow_freeze,0.98,not mention,Not mentioned ,,,
+47.6% EG + 10% COOH-PLL + 1.71% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
+9.2% DMSO + 7.9% acetamide + 22.5% Propylene glycol,0.2,slow_freeze,0.85,not mention,Not mentioned ,,,
+47.6% EG + 1.71% Sucrose,0,slow_freeze,0.98,not mention,Not mentioned ,,,
+47.6% EG + 10% COOH-PLL + 1.71% Sucrose,0,slow_freeze,1,not mention,Not mentioned ,,,
+9.2% DMSO + 7.9% acetamide + 22.5% Propylene glycol,0.2,rapid_freeze,0.85,not mention,Not mentioned ,,,
+47.6% EG + 1.71% Sucrose,0,rapid_freeze,0.98,not mention,Not mentioned ,,,
+47.6% EG + 10% COOH-PLL + 1.71% Sucrose,0,rapid_freeze,1,not mention,Not mentioned ,,,
 1.71% Sucrose,0,slow_freeze,0.05,not mention,Not mentioned ,"8 pulses at 1.5 kV/cm field strength was used for electroporation. To achieve a physiological pH of 7.4, K2HPO4 and KH2PO4 were mixed in the ratio of 40.5 to 9.5Typhan blue exclusion and flow cytometry used for viability testing. ",400mM highest ,https://doi.org/10.1016/j.cryobiol.2019.10.002
 3.42%  Sucrose,0,slow_freeze,0.17,not mention,Not mentioned ,,cells were able to attach 24 h after thawing demonstrating characteristic shape and sugar-loaded vacuoles,
 5.13% Sucrose,0,slow_freeze,0.6,not mention,Not mentioned ,,,
@@ -299,10 +299,10 @@ Higher percentage of dead cells at 0 mM trehalose compared to trehalose + dextra
 3.42% Trehalose,0,slow_freeze,0.14,not mention,Not mentioned ,,,
 5.13%Trehalose,0,slow_freeze,0.62,not mention,Not mentioned ,,,
 13.69% Trehalose,0,slow_freeze,0.78,not mention,Not mentioned ,,,
-2.52% Raffinose,0,slow_freeze,0.07,not mention,Not mentioned ,,,
-5.04% Raffinose,0,slow_freeze,0.19,not mention,Not mentioned ,,,
-7.57% Raffinose,0,slow_freeze,0.75,not mention,Not mentioned ,,,
-20.18% Raffinose,0,slow_freeze,0.8,not mention,Not mentioned ,,,
+1.71% Raffinose,0,slow_freeze,0.07,not mention,Not mentioned ,,,
+3.42% Raffinose,0,slow_freeze,0.19,not mention,Not mentioned ,,,
+5.13% Raffinose,0,slow_freeze,0.75,not mention,Not mentioned ,,,
+13.69% Raffinose,0,slow_freeze,0.8,not mention,Not mentioned ,,,
 10% DMSO,0.1,slow_freeze,not mention,0.15,Not mentioned ,,,doi:10.4061/2011/981606
 10% Ethylene Glycol,0,slow_freeze,not mention,0.17,Not mentioned ,,,
 10% propylene glycol,0,slow_freeze,not mention,0.1,Not mentioned ,,,
@@ -349,14 +349,14 @@ Higher percentage of dead cells at 0 mM trehalose compared to trehalose + dextra
 5% DMSO + 95% EMEA-FBS,0.05,slow_freeze,not mention,not mention,38.4¬± 2.4 h,"no test on viablility ÔºåCell proliferation was measured by using the PKH26-GL cell linker kit,Flow cytometry to analyze surface markers",MSC derived after freezing and storage of either freshly isolated BM-MNC or ex vivo -expanded MSC have the same phenotypic and cellular characteristics as MSC derived from freshly isolated BM-MNC,10.1080/14653240701322235
 90% autologous plasma + 10% DMSO,0.1,slow_freeze,not mention,not mention,Not mentioned , viability tested by trypan blue,"After thawing, the MSCs were more than 90% viable and sterile",10.3109/14653240903313966
 20% FBS + 10% DMSO,0.1,slow_freeze,0.85,not mention,Not mentioned , viability tested by trypan blue,Overall results indicated that the best CPAs were both containing 10% (v/v) DMSO and showed a unsatisfactory viability for Trehalose group,10.1089/bio.2012.0005
-20% FBS + 5% DMSO + 2.07% Trehalose,0.05,slow_freeze,not mention,not mention,Not mentioned ,,,
+20% FBS + 5% DMSO + 2.05% Trehalose,0.05,slow_freeze,not mention,not mention,Not mentioned ,,,
 20% FBS + 2.5% DMSO + 1.03% Trehalose,0.025,slow_freeze,not mention,not mention,Not mentioned ,,,
 20% FBS + 9.03% Trehalose,0,slow_freeze,not mention,not mention,Not mentioned ,,,
 5% DMSO + 20% FBS + 17.1% Trehalose,0.05,slow_freeze,0.73,not mention,Not mentioned ,,,
 7% DMSO + 5% HES + 2% BSA,0.07,slow_freeze,0.45,not mention,Not mentioned ,,,
 5% DMSO + 4% HES + 4% FBS,0.05,slow_freeze,0.38,not mention,Not mentioned ,,,
 10% DMSO + 12% HES + 8% FBS,0.1,slow_freeze,0.8,not mention,Not mentioned ,,,
-0.00143% z-VAD-fmk + 10% DMSO + 20% FBS,0.1,slow_freeze,0.79,not mention,Not mentioned ,,,
+0.012% z-VAD-fmk + 10% DMSO + 20% FBS,0.1,slow_freeze,0.79,not mention,Not mentioned ,,,
 90% FBS + 10% DMSO,0.1,slow_freeze,0.9,not mention,Not mentioned ,,,
 10% Human serum + 10% DMSO + 20% hydroxychyl starch,0.1,slow_freeze,0.6302,0.8103,38 ¬± 1.69 h,Thawing involved stepwise dilution with a solution containing 20% HS and 5% ACD.Viability assessed by flow cytometry (PI & Annexin VÔºâ,Results showed a high post-thawing cell recovery rate 114% ¬± 2.90% and relatively high viability at 72.71% ¬± 2.12% but will keep decreasing to around 81.03% ¬± 4.30% and 63.02% ¬± 2.33% along with the time and differentiation ability haven‚Äôt showed a big impact after thawing.,10.3109/14653249.2012.677820
 3.42% Sucrose + 10% DMSO + 20% FBS,0.1,slow_freeze,0.87,not mention,Not mentioned ,Trypan blue dye for viability test and Flow cytometry for checking cell surface markers,"The result showed that MSSF (1¬∞C/min, FS-1) is the optimal solution with highest viability (87¬±5%) and vitrification showed a poor result in general.",10.2174/1574888x11308010008
@@ -397,7 +397,7 @@ Higher percentage of dead cells at 0 mM trehalose compared to trehalose + dextra
 100% FBS,0,slow_freeze,not mention,not mention,Not mentioned ,,,10.1186/s12891-019-2700-3
 Human serum albumin + 20% DMSO,0.1,slow_freeze,0.948,not mention,Not mentioned ,,,10.1016/j.jtct.2023.08.025.
 20% Ethylene Glycol + 20% Fetal Bovine Serum,0,rapid_freeze,0.843,not mention,"Post-thaw: Average 3.4 days (Passage 3 to 14), comparable to non-cryopreserved HAMs (3.3 days)","HAMs isolated from 10 human placentas (Cesarean section) with IRB approval, treated with trypsin and collagenase/DNase, cultured in DMEM-LG with 10% FBS; vitrification with two-step exposure (20% EG for 5 min, then 40% EG + 18% Ficoll 70 + 0.3 M sucrose for 40 s), plunged into liquid nitrogen in cryovials, stored for 2 weeks, thawed in 37¬∞C water bath with stepwise sucrose dilution; viability assessed by Trypan Blue, morphology and proliferation monitored to Passage 14, surface antigens (CD31, CD34, CD44, etc.) analyzed by flow cytometry, ESC markers (Oct-4, Nestin, etc.) by RT-PCR and immunocytochemistry, differentiation (osteogenic, adipogenic, chondrogenic) evaluated with Von Kossa, Oil Red O, and Alcian Blue staining; statistical analysis with œá¬≤ test (p<0.05).","Vitrification yielded 84.3 ¬± 3.2% viability, preserving fibroblast-like morphology, proliferation (doubling time 3.4 days), and MSC/ESC marker expression (CD44, CD90, Oct-4, TRA-1-60) post-thaw; cells differentiated into osteoblasts (CBFA-1), adipocytes (LPL), and chondrocytes (Decorin) similarly to non-cryopreserved controls; EG-based solution (EFS 40) outperformed slow freezing and combinations with DMSO/PROH, with Ficoll 70 enhancing permeation; limitations include short 2-week storage and potential contamination risks from liquid nitrogen.",10.1093/humrep/den202
-40% Ethylene Glycol + 18% Ficoll 70 + 0.3 M Sucrose + 20% FBS,0,slow_freeze,0.843,not mention,"Post-thaw: Average 3.4 days (Passage 3 to 14), comparable to non-cryopreserved HAMs (3.3 days)",,,10.1093/humrep/den202
+40% Ethylene Glycol + 18% Ficoll 70 + 10.27% Sucrose + 20% FBS,0,slow_freeze,0.843,not mention,"Post-thaw: Average 3.4 days (Passage 3 to 14), comparable to non-cryopreserved HAMs (3.3 days)",,,10.1093/humrep/den202
 6% Hydroxyethyl Starch + 20% DMSO,0.1,slow_freeze,not mention,not mention,Not mentioned ,"HPC collected from 94 patients (2013‚Äì2022) via apheresis, platelet depletion, volume reduction, cryopreserved with 10% DMSO + 6% HES in EVA bags, controlled-rate freezing (MiniDigitcool), stored in gas-phase LN2; microbiological testing negative",,10.1186/s12967-022-03703-1
 6% Hydroxyethyl Starch,0.05,slow_freeze,0.65,0.73,Not mentioned ,"Thawing with Smart-Max (9 min static + 1 min dynamic at 37¬∞C), 1:1 dilution with 6% HES, Sepax-2 S100 SmartWash to concentrate 2 bags into 1 (150 mL), same day, same operator, 3‚Äì4 h interval (n=45); CD34+/CD45+ viability via flow cytometry (Stem-Kit, ISCT protocol), CFU-GM assay for allogeneic; Mann-Whitney, Bland-Altman analysis (p‚â§0.05, GraphPad Prism 5)","Comparable CD34+ recovery (75% vs. 73%, p=0.54) and viability (CD34+ 78% vs. 78%, CD45+ 79% vs. 80%, p=0.85/0.59), bias near 0% (Bland-Altman); recovery linked to initial product quality",10.1186/s12967-022-03703-1
 6% Hydroxyethyl Starch,0.05,slow_freeze,0.65,0.77,Not mentioned ,"Thawing with Smart-Max (9 min static + 1 min dynamic at 37¬∞C), 1:1 dilution with 6% HES, Sepax-2 S100 SmartWash to concentrate 2 bags into 1 (150 mL), different days, different operators (n=49); CD34+/CD45+ viability via flow cytometry (Stem-Kit, ISCT protocol), CFU-GM assay for allogeneic; Mann-Whitney, Bland-Altman analysis (p‚â§0.05, GraphPad Prism 5)","Comparable CD34+ recovery (77% vs. 77%, p=0.74) and viability (CD34+ 84% vs. 85%, CD45+ 79% vs. 78%, p=0.95/0.69), bias near 0% (Bland-Altman); recovery linked to initial product quality",10.1186/s12967-022-03703-1
