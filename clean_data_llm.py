@@ -152,22 +152,25 @@ def process_single_ingredient(part, depth=0):
     # 2. Extraction
     pattern = re.search(r'([\d\.]+)\s*(%|mm|mmol/l|m|mol/l|µm|µg/ml|ng/ml|mg/ml|g/l)', part, re.IGNORECASE)
     if pattern:
-        val = float(pattern.group(1))
-        unit = pattern.group(2).lower()
-        name = part.replace(pattern.group(0), '').strip(' .(),[]-+;:')
+        try:
+            val = float(pattern.group(1))
+            unit = pattern.group(2).lower()
+            name = part.replace(pattern.group(0), '').strip(' .(),[]-+;:')
+        except:
+            return "REJECT_MISSING_CONC"
     else:
-        val = 1.0
-        unit = 'present'
-        name = part
+        # User Correction: No numeric concentration found? 
+        # Don't guess. Reject and move to missing_ingredients.csv.
+        return "REJECT_MISSING_CONC"
     
-    # Clean name
+    # ... existing media cleaning ...
     for m in BASE_MEDIA_LIST:
         name = re.sub(r'\bin ' + re.escape(m) + r'\b.*', '', name, flags=re.IGNORECASE).strip(' .(),[]-+;:')
     
     name = re.sub(r'\(.*?\)', '', name).strip(' .(),[]-+;:')
     if not name or len(name) < 2: return []
 
-    # 3. Canonical mapping with word boundaries
+    # 3. Canonical mapping
     for canonical, synonyms in CHEMICAL_MAP.items():
         search_list = [canonical] + synonyms
         found = False
@@ -177,14 +180,24 @@ def process_single_ingredient(part, depth=0):
                 break
         if found:
             key, final_val = unify_unit(canonical, val, unit)
+            
+            # --- Dust Concentration Cleaning ---
+            # Threshold: 1e-4 (0.0001% or equivalent). Anything below is considered noise.
+            # Convert trace check to percentage for common ground
+            trace_limit = 1e-4
+            check_val = final_val
+            if "(mm)" in key.lower():
+                # Rough check: 0.1mM is typically > 1e-4% for small molecules
+                if final_val < 0.01: return "REJECT_TRACE" 
+            else:
+                if final_val < trace_limit: return "REJECT_TRACE"
+                
             return [(key, final_val)]
     
     # 4. Final exclusion
     low_name = name.lower()
     if any(m == low_name for m in BASE_MEDIA_LIST): return []
-    if len(name) > 3 and not any(kw == low_name for kw in ['solution', 'cocktail', 'mixture', 'medium', 'buffer', 'base', 'water', 'agar']):
-        return [(f"{name}({unit})", val)]
-    return []
+    return [(f"{name}({unit})", val)]
 
 def get_cooling_rate(text):
     text = clean_text(text)
@@ -234,6 +247,9 @@ def main():
         
         for p in parts:
             res = process_single_ingredient(p)
+            if res in ["REJECT_MISSING_CONC", "REJECT_TRACE"]:
+                ingredients = {} # Reset to trigger missing logic
+                break
             for key, val in res:
                 ingredients[key] = ingredients.get(key, 0) + val
         
