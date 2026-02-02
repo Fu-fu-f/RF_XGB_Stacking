@@ -150,8 +150,20 @@ def process_single_ingredient(part, depth=0):
                 return results
 
     # 2. Extraction
+    # Format A (Literature): 10% DMSO or 100 mM Trehalose
     pattern = re.search(r'([\d\.]+)\s*(%|mm|mmol/l|m|mol/l|µm|µg/ml|ng/ml|mg/ml|g/l)', part, re.IGNORECASE)
-    if pattern:
+    
+    # Format B (Generated): 10.00 dmso(mM)
+    pattern_gen = re.search(r'([\d\.]+)\s+([^\(]+)\((%|mm|mmol/l|m|mol/l|µm|µg/ml|ng/ml|mg/ml|g/l)\)', part, re.IGNORECASE)
+
+    if pattern_gen:
+        try:
+            val = float(pattern_gen.group(1))
+            name = pattern_gen.group(2).strip(' .(),[]-+;:')
+            unit = pattern_gen.group(3).lower()
+        except:
+            return "REJECT_MISSING_CONC"
+    elif pattern:
         try:
             val = float(pattern.group(1))
             unit = pattern.group(2).lower()
@@ -159,8 +171,6 @@ def process_single_ingredient(part, depth=0):
         except:
             return "REJECT_MISSING_CONC"
     else:
-        # User Correction: No numeric concentration found? 
-        # Don't guess. Reject and move to missing_ingredients.csv.
         return "REJECT_MISSING_CONC"
     
     # ... existing media cleaning ...

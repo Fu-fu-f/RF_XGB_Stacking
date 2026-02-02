@@ -34,8 +34,11 @@ class ModelTrainer:
         # Literature (default/0) gets 0.05, Lab data gets 1e-10 (high trust)
         self.train_df['alpha'] = 0.05
         if 'source' in self.df.columns:
-            self.train_df.loc[self.df['source'].str.lower() == 'lab', 'alpha'] = 1e-10
-            lab_count = (self.df['source'].str.lower() == 'lab').sum()
+            # Ensure source column is handled as string even if it contains NaNs
+            source_series = self.df['source'].fillna('').astype(str).str.lower()
+            is_lab = source_series == 'lab'
+            self.train_df.loc[is_lab, 'alpha'] = 1e-10
+            lab_count = is_lab.sum()
             print(f"Detected {lab_count} Lab-validated samples (High Trust).")
         
         self.feature_cols = chem_features + rate_dummies.columns.tolist()
