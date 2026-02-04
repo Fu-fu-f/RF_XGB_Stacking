@@ -166,19 +166,21 @@ def process_single_ingredient(part, depth=0):
     if pattern_gen:
         try:
             val = float(pattern_gen.group(1))
-            name = pattern_gen.group(2).strip(' .(),[]-+;:')
+            name = pattern_gen.group(2).strip(' .[],-+;:')
             unit = pattern_gen.group(3).lower()
         except:
-            return "REJECT_MISSING_CONC"
+            return [] # Skip instead of rejecting the whole row
     elif pattern:
         try:
             val = float(pattern.group(1))
             unit = pattern.group(2).lower()
-            name = part.replace(pattern.group(0), '').strip(' .(),[]-+;:')
+            name = part.replace(pattern.group(0), '').strip(' .[],-+;:')
         except:
-            return "REJECT_MISSING_CONC"
+            return []
     else:
-        return "REJECT_MISSING_CONC"
+        # If no number found, it's likely a header like "Vitrification Solution"
+        # We skip it instead of rejecting the entire record.
+        return []
     
     # ... existing media cleaning ...
     for m in BASE_MEDIA_LIST:
@@ -200,10 +202,13 @@ def process_single_ingredient(part, depth=0):
             
             # --- Dust Concentration Cleaning ---
             # Threshold: 1e-4 (0.0001% or equivalent). Anything below is considered noise.
-            # Convert trace check to percentage for common ground
+            # BUT: Keep 0.0 exactly (it's a scientific control, very useful).
             trace_limit = 1e-4
-            check_val = final_val
-            if "(mm)" in key.lower():
+            
+            # Special case for zero: Always keep
+            if final_val == 0:
+                pass
+            elif "(mm)" in key.lower():
                 # Rough check: 0.1mM is typically > 1e-4% for small molecules
                 if final_val < 0.01: return "REJECT_TRACE" 
             else:
