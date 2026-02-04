@@ -10,19 +10,38 @@ Run the main loop script:
 python3 run_feedback_loop.py
 ```
 
-### Step 2: Run the Experiment
-*   Choose Option **1** in the menu to see the 8 recipes the AI has generated.
+### Step 2: Prepare the Experiment (Unit Conversion)
+*   Choose Option **4**: "Generate Lab SOP."
+*   **Input**: Enter the total volume you plan to prepare (e.g., `10` for 10mL).
+*   **Output**: The system creates **`lab_ready_sop.csv`**. 
+*   **Follow this**: This file converts the AI's math (mM/%) into exact **Grams (for powders)** and **Microlitres (for liquids)**, sorted by the correct lab preparation order.
+
+### Step 3: Run the Experiment
+*   Use the generated `lab_ready_sop.csv` to prepare your 8 recipes.
 *   The team runs these in the lab and records the results (Viability %).
 
-### Step 3: Log the Results
+### Step 4: Log the Results
 *   Choose Option **2**. The script will ask you for the result of each Recipe ID.
 *   **Crucial**: Once entered, the script automatically appends the result to our main database (`Cryopreservative Data 2026.csv`) and tags it as **`Source: Lab`**.
 
-### Step 4: The One-Click Update
+### Step 5: The One-Click Update
 *   Choose Option **3**: "Retrain and Generate." This triggers:
     1.  `clean_data_llm.py`: Re-cleaning the database with your new results.
     2.  `run_training.py`: Feeding the new data into the GP model with "High Trust" weighting.
     3.  `run_optimization.py`: Outputting the next generation of superior recipes.
+
+## 2. Understanding the Lab SOP (Option 4)
+
+To ensure high-precision results, the SOP generator applies specific scientific logic:
+
+1.  **Unit Logic**: 
+    *   **mM (Millimolar)**: Converted to Grams using the component's Molecular Weight.
+    *   **% (Percentage)**: Converted to Grams (w/v) or mL (v/v) based on pure mass ratios.
+2.  **Preparation Sequence**: 
+    *   **Powders First**: All solid components are listed first so you can weigh them out in one go.
+    *   **Dissolve Step**: Instructions to add 70% of the media to dissolve the powders.
+    *   **Liquids/DMSO Last**: Lipids, serums, and DMSO are added last. DMSO is specifically marked as **DROPWISE** due to its exothermic (heat-releasing) reaction.
+3.  **Strict Volumetrics**: The SOP dictates a "Top Up" step to ensure the final volume is exactly what was requested, compensating for the displacement volume of the dissolved solids.
 
 ## 2. Core Mechanisms: "High Trust" & Flexibility
 

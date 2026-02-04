@@ -28,19 +28,61 @@ Cooling rates are critical, but human descriptions are chaotic. Our parser uses 
 
 **💡 Tech Note**: These categories are converted into binary "One-Hot" columns (0 or 1), so the AI knows exactly under which thermal conditions a specific survival rate was achieved.
 
-## 3. The Math of Unit Unification
+## 3. Alias Mapping: Decoding Scientific Synonyms
+
+Different research papers often use different names for the same chemical. To prevent the AI from seeing them as separate ingredients, we consolidate them into **Canonical Tags**:
+
+| Canonical Tag | Synonyms / Aliases (What the AI looks for) |
+| :--- | :--- |
+| **dmso** | Me2SO, Dimethyl Sulfoxide, Dimso |
+| **fbs** | FCS, Fetal Bovine Serum, Serum |
+| **hsa** | Human Albumin, HAS, Albumin, HA |
+| **poly** | **COOH-PLL**, Polyampholyte, ε-poly-l-lysine |
+| **sp2** | Storage Protein 2, Silkworm Storage Protein |
+| **trehalose** | Trehalose Dihydrate |
+| **sucrose** | Saccharose, Cane Sugar |
+| **proh** | Propylene glycol, 1,2-propanediol |
+| **peg** | Polyethylene glycol, PEG400, PEG1000, PEG4000 |
+| **hes** | Hydroxyethyl starch, HES450 |
+
+## 4. The Math of Unit Unification
 
 To let percentages (%) and millimolar (mM) values coexist in the same model, we apply physical chemistry formulas:
 
 *   **Large Molecules (Proteins/Polymers)**: Like FBS, HSA, or HES are unified to **Percentage (%)**.
 *   **Small Molecules (Sugars/CPAs/Salts)**: Like DMSO, Trehalose, or Glucose are unified to **Millimolar (mM)**.
 
-### The Conversion Engine (MW-based):
+### 4.1 Rationale: Why use Hybrid Units?
+
+The AI uses this "two-world" system for three critical reasons:
+
+1.  **Physical Chemistry Accuracy**:
+    *   **Small Molecules (mM)**: Ingredients like DMSO or Sugars protect cells based on the **number of molecules** (colligative properties) they provide to displace water. Using mM accurately represents this "molecule-for-molecule" battle against ice.
+    *   **Large Molecules (%)**: Proteins (SP2, Serum) and Polymers protect via **surface coverage** or viscosity. Their effectiveness depends on their total mass and physical volume, making Percentage (%) the correct scientific metric.
+
+2.  **Numerical Stability (Feature Scaling)**: 
+    *   Proteins have massive molecular weights. If we forced a Protein like SP2 into mM, its concentration might be **0.000002 mM**. 
+    *   In the same calculation, DMSO might be **1280 mM**. 
+    *   This huge gap (10^9 difference) would cause "numerical drowning," where the AI ignores the tiny protein values. By using %, all features stay in a healthy **0.1 to 100** range, giving every ingredient an equal "voice" in the model.
+
+3.  **Data Reliability**: 
+    *   Small molecules have fixed MWs. 
+    *   Large molecules like FBS (Serum) are complex mixtures with no single MW. Using % is the only robust way to ensure data from different labs remains comparable.
+
+### 4.2 The Conversion Engine (MW-based):
 The code has an internal library of **Molecular Weights (MW)**:
 *   **From % to mM**: `C(mM) = (C(%) * 10000) / MW`
 *   **From mM to %**: `C(%) = (C(mM) * MW) / 10000`
 
 *Examples: DMSO (78.13), Glycerol (92.09), Trehalose/Sucrose (342.3), HSA (66500).*
+
+> ⚠️ **CRITICAL SCIENTIFIC WARNING: Hydrate vs. Anhydrous MW**
+> The system defaults to **Anhydrous (无水物)** molecular weights for most calculations.
+> *   **Trehalose**: Currently 342.3 (Anhydrous), but lab common is **378.33 (Dihydrate 二水物)**.
+> *   **MgCl2**: Currently 95.21 (Anhydrous), but lab common is **203.3 (Hexahydrate 六水物)**.
+> 
+> **Impact**: If you weigh out 200mM of *hydrate* using the AI's *anhydrous* calculation, your actual concentration will be **significantly lower** than intended. 
+> **Lab Practice**: Always verify the MW on your chemical container label before preparing the final recipe.
 
 ## 4. Cleaning the "Long Tail"
 

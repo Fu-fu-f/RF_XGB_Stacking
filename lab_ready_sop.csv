@@ -1,0 +1,97 @@
+Recipe_ID,Step,Component,State,Action,Amount,Note
+1,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2360 g,Target 205.01mm
+,3,k2hpo4,Solid,WEIGH,0.0174 g,Target 9.98mm
+,4,pvp,Solid,WEIGH,0.7730 g,Target 7.73%
+,5,ectoin,Solid,WEIGH,0.7170 g,Target 7.17%
+,6,hes,Solid,WEIGH,0.5600 g,Target 5.6%
+,7,mc,Solid,WEIGH,0.2340 g,Target 2.34%
+,8,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,9,fbs,Liquid,ADD,1799.0 uL,Mix gently
+,10,glycerol,Liquid,ADD,8.6 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+2,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2339 g,Target 203.15mm
+,3,k2hpo4,Solid,WEIGH,0.0654 g,Target 37.54mm
+,4,hes,Solid,WEIGH,0.7010 g,Target 7.01%
+,5,pvp,Solid,WEIGH,0.6320 g,Target 6.32%
+,6,ectoin,Solid,WEIGH,0.4000 g,Target 4.0%
+,7,mc,Solid,WEIGH,0.3200 g,Target 3.2%
+,8,hsa,Solid,WEIGH,0.1850 g,Target 1.85%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,848.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+3,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2445 g,Target 212.36mm
+,3,hsa,Solid,WEIGH,0.9160 g,Target 9.16%
+,4,ectoin,Solid,WEIGH,0.8920 g,Target 8.92%
+,5,pvp,Solid,WEIGH,0.6540 g,Target 6.54%
+,6,mc,Solid,WEIGH,0.5900 g,Target 5.9%
+,7,hes,Solid,WEIGH,0.5200 g,Target 5.2%
+,8,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,9,glycerol,Liquid,ADD,46.1 uL,Mix gently
+,10,fbs,Liquid,ADD,804.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+4,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2358 g,Target 204.82mm
+,3,kh2po4,Solid,WEIGH,0.0439 g,Target 32.24mm
+,4,pvp,Solid,WEIGH,1.3660 g,Target 13.66%
+,5,ectoin,Solid,WEIGH,1.0250 g,Target 10.25%
+,6,mc,Solid,WEIGH,0.2990 g,Target 2.99%
+,7,hes,Solid,WEIGH,0.2330 g,Target 2.33%
+,8,hsa,Solid,WEIGH,0.1430 g,Target 1.43%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,1163.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+5,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2208 g,Target 191.78mm
+,3,k2hpo4,Solid,WEIGH,0.0745 g,Target 42.77mm
+,4,ectoin,Solid,WEIGH,1.6070 g,Target 16.07%
+,5,mc,Solid,WEIGH,0.4620 g,Target 4.62%
+,6,hes,Solid,WEIGH,0.4150 g,Target 4.15%
+,7,hsa,Solid,WEIGH,0.3330 g,Target 3.33%
+,8,pvp,Solid,WEIGH,0.3180 g,Target 3.18%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,809.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+6,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2319 g,Target 201.4mm
+,3,kh2po4,Solid,WEIGH,0.0255 g,Target 18.75mm
+,4,mc,Solid,WEIGH,1.3860 g,Target 13.86%
+,5,ectoin,Solid,WEIGH,1.2260 g,Target 12.26%
+,6,pvp,Solid,WEIGH,0.4450 g,Target 4.45%
+,7,hes,Solid,WEIGH,0.2030 g,Target 2.03%
+,8,hsa,Solid,WEIGH,0.0870 g,Target 0.87%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,800.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+7,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2266 g,Target 196.79mm
+,3,kh2po4,Solid,WEIGH,0.0342 g,Target 25.15mm
+,4,ectoin,Solid,WEIGH,1.1610 g,Target 11.61%
+,5,pvp,Solid,WEIGH,0.7320 g,Target 7.32%
+,6,mc,Solid,WEIGH,0.6510 g,Target 6.51%
+,7,hes,Solid,WEIGH,0.2140 g,Target 2.14%
+,8,hsa,Solid,WEIGH,0.0920 g,Target 0.92%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,1201.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
+8,1,START,-,Prepare Tube,10.0mL scale,Clean environment
+,2,proline,Solid,WEIGH,0.2241 g,Target 194.63mm
+,3,kh2po4,Solid,WEIGH,0.0458 g,Target 33.67mm
+,4,pvp,Solid,WEIGH,0.7390 g,Target 7.39%
+,5,hes,Solid,WEIGH,0.7290 g,Target 7.29%
+,6,ectoin,Solid,WEIGH,0.6420 g,Target 6.42%
+,7,mc,Solid,WEIGH,0.3470 g,Target 3.47%
+,8,hsa,Solid,WEIGH,0.3040 g,Target 3.04%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,753.0 uL,Mix gently
+,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,

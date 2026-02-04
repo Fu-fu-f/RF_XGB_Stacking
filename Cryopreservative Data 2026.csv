@@ -853,3 +853,5 @@ electroporation buffer + 250 mM trehalose,0%,-1°C/min to 80°C and stay overnig
 "electroporation buffer (10 mM K2HPO4, 10 mM KH2PO4, 1 mM MgCl2) + 250 mM",0%,-1°C/min to 80°C and stay overnight then to -196°C,82%,not mentioned ,not mentioned ,,,10.1007/s00232-016-9916-z,,,,,,,,,,
 "electroporation buffer (10 mM K2HPO4, 10 mM KH2PO4, 1 mM MgCl2) + 450 mM",0%,-1°C/min to 80°C and stay overnight then to -196°C,75%,not mentioned ,not mentioned ,,,10.1007/s00232-016-9916-z,,,,,,,,,,
 ,,,,,,,,10.1007/s00232-016-9916-z,,,,,,,,,,
+547.98 dmso(mM) + 5.08 fbs(%) + 4.61 hes(%) + 4.29 hsa(%) + 4.16 sp2(%) + 3.48 pvp(%) + 2.44 poly(%) + 2.24 peg(%),,slow freeze,88.5%,,,,,,,,,,,,,,,Lab
+540.62 dmso(mM) + 8.00 fbs(%) + 7.61 poly(%) + 7.58 pvp(%) + 7.18 hsa(%) + 3.99 peg(%) + 3.78 sp2(%) + 3.58 hes(%),,slow freeze,92.0%,,,,,,,,,,,,,,,Lab

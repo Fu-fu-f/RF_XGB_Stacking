@@ -69,6 +69,7 @@ CHEMICAL_MAP = {
     'glycine': [],
     'sericin': [],
     'poly': ['polyampholyte', 'cooh-pll'],
+    'sp2': ['storage protein 2', 'sp2', 'silkworm storage protein'],
 }
 
 BUFFER_LIBRARY = {}
@@ -91,7 +92,7 @@ def unify_unit(canonical, val, unit):
     mw = MW_MAP.get(canonical)
 
     # 1. Target: % (Large Molecules)
-    if canonical in ['fbs', 'hsa', 'albumin', 'sericin', 'poly', 'hes', 'mc']:
+    if canonical in ['fbs', 'hsa', 'albumin', 'sericin', 'poly', 'hes', 'mc', 'sp2']:
         target_name = f"{canonical}(%)"
         if unit == 'present': return target_name, 1.0
         if unit == '%': return target_name, val
@@ -136,10 +137,17 @@ def unify_unit(canonical, val, unit):
 
 def process_single_ingredient(part, depth=0):
     if depth > 2: return [] 
-    part = part.strip(' .(),[]-+;:')
+    # Don't strip brackets here as they are needed for the (mM)/(%) format
+    part = part.strip(' .[]-+;:')
     if not part: return []
+
+    # 1. Base Media/Buffer Identification (Ignore these if no concentration is given)
+    low_part = part.lower()
+    # Check if the entire part is just a background term
+    if any(m == low_part for m in BASE_MEDIA_LIST) or low_part in ['supplemented with', 'in', 'and', 'with']:
+        return []
     
-    # 1. Buffer Handling
+    # 2. Buffer Handling
     for buf_name, buf_details in BUFFER_LIBRARY.items():
         if buf_name in part.lower():
             if '(' not in part or ')' not in part:
@@ -149,12 +157,11 @@ def process_single_ingredient(part, depth=0):
                     results.extend(process_single_ingredient(rp, depth + 1))
                 return results
 
-    # 2. Extraction
-    # Format A (Literature): 10% DMSO or 100 mM Trehalose
-    pattern = re.search(r'([\d\.]+)\s*(%|mm|mmol/l|m|mol/l|µm|µg/ml|ng/ml|mg/ml|g/l)', part, re.IGNORECASE)
+    # Sort units by length descending to match 'mg/ml' before 'm'
+    pattern = re.search(r'([\d\.]+)\s*(mmol/l|mol/l|mg/ml|µg/ml|ng/ml|mm|m|µm|g/l|%)', part, re.IGNORECASE)
     
     # Format B (Generated): 10.00 dmso(mM)
-    pattern_gen = re.search(r'([\d\.]+)\s+([^\(]+)\((%|mm|mmol/l|m|mol/l|µm|µg/ml|ng/ml|mg/ml|g/l)\)', part, re.IGNORECASE)
+    pattern_gen = re.search(r'([\d\.]+)\s+([^\(]+)\((mmol/l|mol/l|mg/ml|µg/ml|ng/ml|mm|m|µm|g/l|%)\)', part, re.IGNORECASE)
 
     if pattern_gen:
         try:
@@ -244,7 +251,6 @@ def main():
     # PASS 2: Processing
     for _, row in df.iterrows():
         raw_ing = str(row.get('all ingredients in cryoprotective solution', '')).strip()
-        source = str(row.get('source', 'Literature')).strip()
         
         if any(kw in raw_ing.lower() for kw in COMMERCIAL_KEYWORDS):
             commercial_list.append(row)
@@ -273,6 +279,10 @@ def main():
             missing_list.append(row)
             continue
         
+        # Capture Source and ensure it defaults to 'Literature' if truly null or empty
+        raw_source = row.get('source')
+        source = str(raw_source).strip() if pd.notna(raw_source) and str(raw_source).strip() != '' else 'Literature'
+        
         entry = {
             'original_ingredients': raw_ing,
             'viability': v,
@@ -284,15 +294,29 @@ def main():
         
     df_clean_all = pd.DataFrame(clean_list).fillna(0)
     meta = ['original_ingredients', 'viability', 'cooling_rate', 'source']
-    feats_only = [c for c in df_clean_all.columns if c not in meta]
-    usage = (df_clean_all[feats_only] > 0).sum().sort_values(ascending=False)
+    all_ingredients = [c for c in df_clean_all.columns if c not in meta]
     
+    # Identify Top-N ingredients
+    usage = (df_clean_all[all_ingredients] > 0).sum().sort_values(ascending=False)
     top_keep = usage.head(TOP_N_FEATURES).index.tolist()
-    final_cols = ['original_ingredients'] + top_keep + ['viability', 'cooling_rate', 'source']
-    df_clean_final = df_clean_all[final_cols]
+    other_ingredients = [c for c in all_ingredients if c not in top_keep]
     
+    # --- Option A: Strict Filtering ---
+    # We drop rows that contain ANY ingredient NOT in the Top-N list.
+    # This prevents the AI from falsely attributing success to top-15 ingredients 
+    # when the "secret sauce" was actually a discarded rare ingredient.
+    if other_ingredients:
+        # A row is 'clean' if all its 'other_ingredients' values are 0
+        is_exclusive = (df_clean_all[other_ingredients] == 0).all(axis=1)
+        before_count = len(df_clean_all)
+        df_clean_final = df_clean_all[is_exclusive][['original_ingredients'] + top_keep + ['viability', 'cooling_rate', 'source']]
+        after_count = len(df_clean_final)
+        print(f"Option A Filtering: Dropped {before_count - after_count} rows containing rare ingredients.")
+    else:
+        df_clean_final = df_clean_all[['original_ingredients'] + top_keep + ['viability', 'cooling_rate', 'source']]
+
     df_clean_final.to_csv(OUTPUT_CLEAN_FILE, index=False)
-    print(f"Saved {len(df_clean_final)} cleaned rows.")
+    print(f"Saved {len(df_clean_final)} high-integrity cleaned rows.")
     
     if commercial_list:
         pd.DataFrame(commercial_list).to_csv(OUTPUT_COMMERCIAL_FILE, index=False)

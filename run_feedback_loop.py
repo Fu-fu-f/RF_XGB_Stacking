@@ -24,9 +24,10 @@ def main_loop():
         print("1. View Current Batch Recipes (Last Generated)")
         print("2. Input New Experimental Results (Lab Validation)")
         print("3. Retrain and Generate Next Batch (Auto-Pipeline)")
-        print("4. Exit")
+        print("4. Generate Lab SOP (Convert to Grams/uL)")
+        print("5. Exit")
         
-        choice = input("\nSelect an option (1-4): ").strip()
+        choice = input("\nSelect an option (1-5): ").strip()
         
         if choice == '1':
             if os.path.exists(RECIPE_FILE):
@@ -42,7 +43,7 @@ def main_loop():
                 continue
                 
             df = pd.read_csv(RECIPE_FILE)
-            print("\n--- Inputing Lab Results ---")
+            print("\n--- Inputting Lab Results ---")
             
             new_data_rows = []
             for idx, row in df.iterrows():
@@ -53,31 +54,25 @@ def main_loop():
                 if v:
                     try:
                         v_float = float(v)
-                        # Construct a row for the main Database
                         new_row = {
                             'All ingredients in cryoprotective solution': row['Ingredients'],
                             'Viability': f"{v_float}%",
                             'Source': 'Lab',
-                            'Cooling rate': 'slow freeze' # Default for validation
+                            'Cooling rate': 'slow freeze'
                         }
                         new_data_rows.append(new_row)
                     except ValueError:
                         print("Invalid input. Skipping.")
             
             if new_data_rows:
-                # Load raw data and append
                 try:
                     raw_df = pd.read_csv(RAW_DATA_FILE)
-                except:
-                    print("Could not read raw data file.")
-                    continue
-                
-                added_df = pd.DataFrame(new_data_rows)
-                # Align columns and append
-                updated_df = pd.concat([raw_df, added_df], ignore_index=True)
-                updated_df.to_csv(RAW_DATA_FILE, index=False)
-                print(f"\nSUCCESS: {len(new_data_rows)} new lab records saved to '{RAW_DATA_FILE}'.")
-                print("Note: These records are marked as 'Lab' source for High Trust logic.")
+                    added_df = pd.DataFrame(new_data_rows)
+                    updated_df = pd.concat([raw_df, added_df], ignore_index=True)
+                    updated_df.to_csv(RAW_DATA_FILE, index=False)
+                    print(f"\nSUCCESS: {len(new_data_rows)} new lab records saved.")
+                except Exception as e:
+                    print(f"Error saving data: {e}")
             else:
                 print("\nNo new results entered.")
                 
@@ -89,6 +84,11 @@ def main_loop():
             print("\nSUCCESS: Model update and next-gen optimization complete.")
             
         elif choice == '4':
+            vol = input("\nHow many mL of each recipe do you want to prepare? (Default 10): ").strip()
+            if not vol: vol = "10.0"
+            run_cmd(f"python3 src/generate_sop.py {vol}")
+            
+        elif choice == '5':
             print("Exiting. Good luck with your experiments!")
             break
         else:
