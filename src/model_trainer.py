@@ -4,8 +4,6 @@ import numpy as np
 import joblib
 import os
 from sklearn.model_selection import cross_val_score
-from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
 from . import config
 from .ensemble_model import EnsembleStackingModel
 

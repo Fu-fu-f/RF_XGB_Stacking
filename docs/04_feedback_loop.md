@@ -27,7 +27,7 @@ python3 run_feedback_loop.py
 ### Step 5: The One-Click Update
 *   Choose Option **3**: "Retrain and Generate." This triggers:
     1.  `clean_data_llm.py`: Re-cleaning the database with your new results.
-    2.  `run_training.py`: Feeding the new data into the GP model with "High Trust" weighting.
+    2.  `run_training.py`: Feeding the new data into the Stacking model.
     3.  `run_optimization.py`: Outputting the next generation of superior recipes.
 
 ## 2. Understanding the Lab SOP (Option 4)

@@ -1,6 +1,6 @@
 # CryoMN Optimization System
 
-This project is a machine learning tool for optimizing cryopreservation recipes, specifically for cryomicroneedle (cryoMN) applications. It uses Gaussian Process regression to predict cell viability and suggests the best ingredient combinations within expert-defined safety bounds.
+This project is a machine learning tool for optimizing cryopreservation recipes, specifically for cryomicroneedle (cryoMN) applications. It uses an **Ensemble Stacking model (Random Forest + XGBoost)** to predict cell viability and suggests the best ingredient combinations within expert-defined safety bounds.
 
 ### Quick Start: How to Run
 The easiest way to use the system is the interactive loop. Open your terminal and run:

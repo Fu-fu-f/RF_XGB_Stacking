@@ -1,13 +1,13 @@
 # 🎯 Module 3: Optimization Strategy & Constraints
 
-If the GP Model is the "Brain," this module is the "Action Plan." Its mission: **Decide exactly which experiments we should run next based on current knowledge.**
+If the Stacking Model is the "Brain," this module is the "Action Plan." Its mission: **Decide exactly which experiments we should run next based on current knowledge.**
 
 ## 1. The Core Idea: Expected Improvement (EI)
 
 This is the heartbeat of Bayesian Optimization. In every round, the AI faces a dilemma:
 *   **Exploitation**: Stick to known "high-score" areas to refine the recipe.
 *   **Exploration**: Venture into "wild" areas where we haven't tested anything yet.
-The **EI Algorithm** acts as a "Surprise Evaluator," picking the recipe that has the highest potential to break our current survival record.
+The **EI Algorithm** acts as a "Surprise Evaluator," picking the recipe that has the highest potential to break our current survival record. By using the disagreement between RF and XGBoost as our uncertainty measure, the EI algorithm can effectively identify regions of interest.
 
 ## 2. Real-world Constraints
 

@@ -31,8 +31,8 @@ class EnsembleStackingModel:
     def fit(self, X, y, feature_cols=None, alpha_arr=None):
         """
         Fits the ensemble model. 
-        Note: StackingRegressor doesn't natively support sample-wise noise (alpha_arr) 
-        like GP, but we can use sample_weight if needed. For now, we keep the interface.
+        Note: StackingRegressor doesn't natively support per-sample noise (alpha) 
+        like GP models, but we maintain the interface for pipeline compatibility.
         """
         self.X_train = np.array(X)
         self.y_train = np.array(y)
