@@ -8,12 +8,15 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+from .ensemble_model import EnsembleStackingModel
+
 class Recommender:
     def __init__(self, model_path='trained_models/viability_model.joblib'):
-        self.data = joblib.load(model_path)
-        self.model = self.data['model']
-        self.features = self.data['feature_cols']
-        self.y_train_max = np.max(self.data['y_train'])
+        # Use the wrapper class to load so we have the predict(return_std) capability
+        self.wrapper = EnsembleStackingModel.load(model_path)
+        self.model = self.wrapper # Use the wrapper as the model
+        self.features = self.wrapper.feature_cols
+        self.y_train_max = np.max(self.wrapper.y_train)
         
         # Identify indices
         self.rate_indices = [i for i, f in enumerate(self.features) if f.startswith('rate_')]
@@ -107,7 +110,7 @@ class Recommender:
 
         result = differential_evolution(
             objective, bounds, strategy='best1bin', 
-            maxiter=50, popsize=12, seed=seed
+            maxiter=20, popsize=10, seed=seed
         )
         
         # Post-process strictly to 8 ingredients

@@ -3,8 +3,11 @@ import pandas as pd
 import numpy as np
 import joblib
 import os
+from sklearn.model_selection import cross_val_score
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
 from . import config
-from .gp_model import GaussianProcessModel
+from .ensemble_model import EnsembleStackingModel
 
 class ModelTrainer:
     def __init__(self, data_path=None, models_dir='trained_models'):
@@ -29,17 +32,8 @@ class ModelTrainer:
         rate_dummies = pd.get_dummies(self.df['cooling_rate'], prefix='rate')
         self.train_df = pd.concat([self.df, rate_dummies], axis=1)
         
-        # 3. NOISE ASSIGNMENT (Expert Strategy C)
-        # Higher alpha = more noise (less trust)
-        # Literature (default/0) gets 0.05, Lab data gets 1e-10 (high trust)
-        self.train_df['alpha'] = 0.05
-        if 'source' in self.df.columns:
-            # Ensure source column is handled as string even if it contains NaNs
-            source_series = self.df['source'].fillna('').astype(str).str.lower()
-            is_lab = source_series == 'lab'
-            self.train_df.loc[is_lab, 'alpha'] = 1e-10
-            lab_count = is_lab.sum()
-            print(f"Detected {lab_count} Lab-validated samples (High Trust).")
+        # Note: Ensemble models like RF/XGB are less sensitive to noise assignments 
+        # via alpha like GP. We'll skip per-sample noise for now but keep feature selection.
         
         self.feature_cols = chem_features + rate_dummies.columns.tolist()
         print(f"Training with {len(chem_features)} chemicals + {len(rate_dummies.columns)} rate categories.")
@@ -50,15 +44,30 @@ class ModelTrainer:
 
         X = self.train_df[self.feature_cols]
         y = self.train_df['viability']
-        alphas = self.train_df['alpha'].values
         
-        print("\n=== Training GP Model with Heteroscedastic Noise ===")
-        gp_model = GaussianProcessModel()
-        gp_model.fit(X, y, feature_cols=self.feature_cols, alpha_arr=alphas)
+        # === 交叉验证评分 (Cross-Validation) ===
+        print("\n=== Model Evaluation (Ensemble Stacking 5-Fold CV) ===")
+        ensemble = EnsembleStackingModel()
+        
+        # Use sklearn's cross_val_score with the internal model
+        r2_scores = cross_val_score(ensemble.model, X, y, cv=5, scoring='r2')
+        mse_scores = -cross_val_score(ensemble.model, X, y, cv=5, scoring='neg_mean_squared_error')
+        
+        print(f"📊 R² Score: {r2_scores.mean():.4f} (±{r2_scores.std():.4f})")
+        print(f"   [各折分数: {', '.join([f'{s:.3f}' for s in r2_scores])}]")
+        print(f"📊 MSE: {mse_scores.mean():.2f} (±{mse_scores.std():.2f})")
+        
+        if r2_scores.mean() < 0:
+            print("⚠️  警告: R² 为负，模型比平均值更差，数据可能有问题!")
+        
+        print("\n=== Training Final Ensemble Stacking Model ===")
+        final_model = EnsembleStackingModel()
+        final_model.fit(X, y, feature_cols=self.feature_cols)
         
         save_path = os.path.join(self.models_dir, "viability_model.joblib")
-        gp_model.save(save_path)
-        print(f"Expert-Aligned model saved to {save_path}")
+        final_model.save(save_path)
+        print(f"Ensemble model saved to {save_path}")
+
 
 if __name__ == "__main__":
     t = ModelTrainer()
