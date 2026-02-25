@@ -28,20 +28,29 @@ class EnsembleStackingModel:
         self.y_train = None
         self.feature_cols = None
 
-    def fit(self, X, y, feature_cols=None, alpha_arr=None):
+    def fit(self, X, y, feature_cols=None, alpha_arr=None, sample_weights=None):
         """
-        Fits the ensemble model. 
-        Note: StackingRegressor doesn't natively support per-sample noise (alpha) 
-        like GP models, but we maintain the interface for pipeline compatibility.
+        Fits the ensemble model with optional sample weights.
+        
+        Args:
+            X: Feature matrix
+            y: Target values
+            feature_cols: Feature column names
+            alpha_arr: Legacy parameter for GP compatibility (unused)
+            sample_weights: Per-sample weights (e.g., for Lab vs Literature data)
         """
         self.X_train = np.array(X)
         self.y_train = np.array(y)
         self.feature_cols = feature_cols
         
-        # Optional: Use alpha_arr as sample weights (inverse of noise)
-        # weight = 1 / (alpha_arr + 1e-6) if alpha_arr is not None else None
+        # Apply sample weights if provided
+        if sample_weights is not None:
+            sample_weights = np.array(sample_weights)
+            print(f"Training with sample weights (min={sample_weights.min():.1f}, max={sample_weights.max():.1f})")
+            self.model.fit(self.X_train, self.y_train, sample_weight=sample_weights)
+        else:
+            self.model.fit(self.X_train, self.y_train)
         
-        self.model.fit(self.X_train, self.y_train)
         print(f"Ensemble Stacking Model fitted with {len(self.X_train)} samples.")
 
     def predict(self, X, return_std=False):

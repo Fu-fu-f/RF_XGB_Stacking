@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from scipy.optimize import differential_evolution
-from scipy.stats import norm
+from scipy.stats import norm, qmc
 from . import config
 import warnings
 
@@ -133,33 +133,169 @@ class Recommender:
         final_score = np.clip(pred_viability, 0, 100)
         return final_x, final_score
 
-    def suggest_batch_experiment(self, n=8):
-        print(f"--- Global Optimization (Top-8, Unit-Aware Expert Bounds) ---")
+    def latin_hypercube_sampling(self, n=8):
+        """
+        Generate diverse formulations using Latin Hypercube Sampling.
+        
+        Use this for initial exploration when model predictions are unreliable.
+        LHS ensures good coverage of the chemical space without relying on model accuracy.
+        """
+        print(f"--- Latin Hypercube Sampling (Space-Filling Design) ---")
+        
+        # Define bounds for chemical features only (exclude interactions and rates)
+        bounds = []
+        chem_feature_indices = []
+        
+        for i, feat in enumerate(self.features):
+            if i in self.rate_indices or '_x_' in feat:
+                continue  # Skip rate features and interaction terms for LHS
+            
+            feat_lower = feat.lower()
+            chem_feature_indices.append(i)
+            
+            # Same bounds as bayesian_optimize
+            if i in self.presence_indices:
+                bounds.append((0.0, 1.0))
+            elif 'dmso' in feat_lower:
+                if '(%)' in feat:
+                    bounds.append((0.0, 10.0))
+                else:
+                    bounds.append((0.0, 1280.0))
+            elif 'trehalose' in feat_lower or 'sucrose' in feat_lower:
+                if '(%)' in feat:
+                    bounds.append((0.0, 15.0))
+                else:
+                    bounds.append((0.0, 500.0))
+            elif '(%)' in feat:
+                bounds.append((0.0, 20.0))
+            elif '(mm)' in feat_lower:
+                bounds.append((0.0, 500.0))
+            else:
+                bounds.append((0.0, 10.0))
+        
+        # Generate LHS samples
+        sampler = qmc.LatinHypercube(d=len(bounds), seed=42)
+        samples = sampler.random(n=n)
+        
+        # Scale to bounds
+        lower_bounds = np.array([b[0] for b in bounds])
+        upper_bounds = np.array([b[1] for b in bounds])
+        scaled_samples = qmc.scale(samples, lower_bounds, upper_bounds)
+        
         save_data = []
         
-        for i in range(n):
-            print(f"Refining Variant #{i+1}...")
-            vec, score = self.bayesian_optimize(seed=i*123)
+        for i, sample in enumerate(scaled_samples):
+            # Reconstruct full feature vector
+            full_vec = np.zeros(len(self.features))
             
+            # Set chemical features from LHS sample
+            for sample_idx, feat_idx in enumerate(chem_feature_indices):
+                full_vec[feat_idx] = sample[sample_idx]
+            
+            # Set rate features
+            for feat_idx in self.rate_indices:
+                if feat_idx == self.slow_freeze_idx:
+                    full_vec[feat_idx] = 1.0  # Force slow freeze
+            
+            # Calculate interaction terms
+            for feat_idx, feat in enumerate(self.features):
+                if '_x_' in feat:
+                    parts = feat.split('_x_')
+                    idx1 = self.features.index(parts[0]) if parts[0] in self.features else -1
+                    idx2 = self.features.index(parts[1]) if parts[1] in self.features else -1
+                    if idx1 >= 0 and idx2 >= 0:
+                        full_vec[feat_idx] = full_vec[idx1] * full_vec[idx2]
+            
+            # Apply Top-8 constraint (only on base chemicals, not interactions)
+            base_chem_indices = [idx for idx in chem_feature_indices if idx not in self.rate_indices]
+            chem_vals = []
+            for idx in base_chem_indices:
+                bound_idx = chem_feature_indices.index(idx)
+                norm_val = full_vec[idx] / bounds[bound_idx][1] if bounds[bound_idx][1] > 0 else 0
+                chem_vals.append((idx, norm_val))
+            
+            chem_vals.sort(key=lambda item: item[1], reverse=True)
+            top_8_indices = [item[0] for item in chem_vals[:8]]
+            
+            # Zero out non-top-8 base chemicals
+            for idx in base_chem_indices:
+                if idx not in top_8_indices or full_vec[idx] < 0.01:
+                    full_vec[idx] = 0.0
+            
+            # Recalculate interactions after zeroing
+            for feat_idx, feat in enumerate(self.features):
+                if '_x_' in feat:
+                    parts = feat.split('_x_')
+                    idx1 = self.features.index(parts[0]) if parts[0] in self.features else -1
+                    idx2 = self.features.index(parts[1]) if parts[1] in self.features else -1
+                    if idx1 >= 0 and idx2 >= 0:
+                        full_vec[feat_idx] = full_vec[idx1] * full_vec[idx2]
+            
+            # Predict viability
+            pred_viability = self.model.predict(full_vec.reshape(1, -1))[0]
+            final_score = np.clip(pred_viability, 0, 100)
+            
+            # Format ingredients (only base chemicals, not interactions)
             ingredients = []
-            for idx, val in enumerate(vec):
-                if val > 0 and idx not in self.rate_indices:
+            for idx, val in enumerate(full_vec):
+                if val > 0 and idx not in self.rate_indices and '_x_' not in self.features[idx]:
                     ingredients.append((self.features[idx], val))
             
             ingredients.sort(key=lambda x: x[1], reverse=True)
             ing_str = " + ".join([f"{v:.2f} {f}" for f, v in ingredients])
             
-            print(f"  Viability Predict: {score:.2f}% | Ingredients: {len(ingredients)}")
-            print(f"  Recipe: {ing_str}")
+            print(f"Sample #{i+1}: {len(ingredients)} ingredients | Predicted: {final_score:.2f}%")
             
             save_data.append({
                 'Recipe_ID': i+1,
-                'Predicted_Viability': score,
+                'Predicted_Viability': final_score,
                 'Ingredients': ing_str
             })
-            
+        
         pd.DataFrame(save_data).to_csv('latest_batch_recipes.csv', index=False)
-        print("\n[Output] Results exported to 'latest_batch_recipes.csv'.")
+        print("\n[Output] LHS results exported to 'latest_batch_recipes.csv'.")
+        print("💡 Tip: Use LHS for first 1-2 rounds, then switch to Bayesian optimization.")
+    
+    def suggest_batch_experiment(self, n=8, method='lhs'):
+        """
+        Generate batch of experimental recipes.
+        
+        Args:
+            n: Number of recipes to generate
+            method: 'lhs' for Latin Hypercube Sampling (recommended for first round)
+                   'bayesian' for Bayesian Optimization (use after collecting lab data)
+        """
+        if method == 'lhs':
+            self.latin_hypercube_sampling(n=n)
+        elif method == 'bayesian':
+            print(f"--- Bayesian Optimization (Top-8, Unit-Aware Expert Bounds) ---")
+            save_data = []
+            
+            for i in range(n):
+                print(f"Refining Variant #{i+1}...")
+                vec, score = self.bayesian_optimize(seed=i*123)
+                
+                ingredients = []
+                for idx, val in enumerate(vec):
+                    if val > 0 and idx not in self.rate_indices:
+                        ingredients.append((self.features[idx], val))
+                
+                ingredients.sort(key=lambda x: x[1], reverse=True)
+                ing_str = " + ".join([f"{v:.2f} {f}" for f, v in ingredients])
+                
+                print(f"  Viability Predict: {score:.2f}% | Ingredients: {len(ingredients)}")
+                print(f"  Recipe: {ing_str}")
+                
+                save_data.append({
+                    'Recipe_ID': i+1,
+                    'Predicted_Viability': score,
+                    'Ingredients': ing_str
+                })
+                
+            pd.DataFrame(save_data).to_csv('latest_batch_recipes.csv', index=False)
+            print("\n[Output] Results exported to 'latest_batch_recipes.csv'.")
+        else:
+            raise ValueError(f"Unknown method: {method}. Use 'lhs' or 'bayesian'.")
 
 if __name__ == "__main__":
     r = Recommender()

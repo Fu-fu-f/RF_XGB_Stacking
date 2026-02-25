@@ -10,9 +10,19 @@ from src.ingredient_suggestion import Recommender
 def main():
     try:
         rec = Recommender()
-        print("--- Mode: Bayesian Optimization (EI) with 8-Ingredient Constraint ---")
-        # Generate 8 formulas (between 5 and 10 as requested)
-        rec.suggest_batch_experiment(n=8)
+        
+        # Check if we have lab data to decide which method to use
+        import pandas as pd
+        df = pd.read_csv('cleaned_data_2026.csv')
+        n_lab = (df['source'] == 'Lab').sum()
+        
+        if n_lab < 8:
+            print("📊 No sufficient Lab data detected. Using Latin Hypercube Sampling for exploration.")
+            print("   (Switch to Bayesian optimization after collecting 8+ lab results)\n")
+            rec.suggest_batch_experiment(n=8, method='lhs')
+        else:
+            print("📊 Lab data detected. Using Bayesian Optimization for exploitation.\n")
+            rec.suggest_batch_experiment(n=8, method='bayesian')
             
     except Exception as e:
         print(f"\n❌ ERROR: {e}")

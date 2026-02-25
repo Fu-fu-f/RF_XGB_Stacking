@@ -30,11 +30,102 @@ class ModelTrainer:
         rate_dummies = pd.get_dummies(self.df['cooling_rate'], prefix='rate')
         self.train_df = pd.concat([self.df, rate_dummies], axis=1)
         
-        # Note: Ensemble models like RF/XGB are less sensitive to noise assignments 
-        # via alpha like GP. We'll skip per-sample noise for now but keep feature selection.
+        # 3. Add critical interaction features
+        interaction_features = self._create_interaction_features(chem_features)
         
-        self.feature_cols = chem_features + rate_dummies.columns.tolist()
-        print(f"Training with {len(chem_features)} chemicals + {len(rate_dummies.columns)} rate categories.")
+        # 4. Calculate dynamic sample weights based on data source
+        self.sample_weights = self._calculate_sample_weights()
+        
+        self.feature_cols = chem_features + interaction_features + rate_dummies.columns.tolist()
+        print(f"Training with {len(chem_features)} chemicals + {len(interaction_features)} interactions + {len(rate_dummies.columns)} rate categories.")
+    
+    def _create_interaction_features(self, chem_features):
+        """
+        Create biologically meaningful interaction terms.
+        
+        Key interactions based on cryobiology literature:
+        1. DMSO × Sugars (synergistic membrane protection)
+        2. DMSO × Proteins (colligative + protective synergy)
+        3. Sugar × Protein (glass transition enhancement)
+        """
+        interaction_cols = []
+        
+        # Find relevant chemical indices
+        dmso_cols = [c for c in chem_features if 'dmso' in c.lower()]
+        sugar_cols = [c for c in chem_features if any(s in c.lower() for s in ['trehalose', 'sucrose', 'glucose'])]
+        protein_cols = [c for c in chem_features if any(p in c.lower() for p in ['fbs', 'hsa', 'albumin'])]
+        
+        # DMSO × Sugar interactions
+        for dmso in dmso_cols:
+            for sugar in sugar_cols:
+                interaction_name = f"{dmso}_x_{sugar}"
+                self.train_df[interaction_name] = self.train_df[dmso] * self.train_df[sugar]
+                interaction_cols.append(interaction_name)
+        
+        # DMSO × Protein interactions
+        for dmso in dmso_cols:
+            for protein in protein_cols:
+                interaction_name = f"{dmso}_x_{protein}"
+                self.train_df[interaction_name] = self.train_df[dmso] * self.train_df[protein]
+                interaction_cols.append(interaction_name)
+        
+        # Sugar × Protein interactions
+        for sugar in sugar_cols:
+            for protein in protein_cols:
+                interaction_name = f"{sugar}_x_{protein}"
+                self.train_df[interaction_name] = self.train_df[sugar] * self.train_df[protein]
+                interaction_cols.append(interaction_name)
+        
+        if interaction_cols:
+            print(f"   Created {len(interaction_cols)} interaction features")
+        
+        return interaction_cols
+    
+    def _calculate_sample_weights(self):
+        """
+        Dynamic weighting strategy for Lab vs Literature data.
+        
+        Strategy:
+        - 0-10 Lab samples: 15x weight (bootstrap phase, need strong signal)
+        - 11-30 Lab samples: 10x weight (learning phase, balance exploration)
+        - 31-50 Lab samples: 6x weight (refinement phase)
+        - 50+ Lab samples: 3x weight (mature phase, let data speak)
+        """
+        source = self.train_df['source']
+        n_lab = (source == 'Lab').sum()
+        n_lit = (source == 'Literature').sum()
+        
+        if n_lab == 0:
+            print("📊 No Lab data yet. All samples weighted equally.")
+            return np.ones(len(source))
+        
+        # Dynamic weight based on Lab data quantity
+        if n_lab <= 10:
+            lab_weight = 15.0
+            phase = "Bootstrap"
+        elif n_lab <= 30:
+            lab_weight = 10.0
+            phase = "Learning"
+        elif n_lab <= 50:
+            lab_weight = 6.0
+            phase = "Refinement"
+        else:
+            lab_weight = 3.0
+            phase = "Mature"
+        
+        weights = np.where(source == 'Lab', lab_weight, 1.0)
+        
+        # Calculate effective sample contribution
+        lab_effective = n_lab * lab_weight
+        total_effective = lab_effective + n_lit
+        lab_influence_pct = (lab_effective / total_effective) * 100
+        
+        print(f"\n📊 Sample Weighting Strategy ({phase} Phase):")
+        print(f"   Lab data: {n_lab} samples × {lab_weight:.1f} weight = {lab_effective:.0f} effective samples")
+        print(f"   Literature data: {n_lit} samples × 1.0 weight = {n_lit} effective samples")
+        print(f"   Lab influence: {lab_influence_pct:.1f}% of total training signal")
+        
+        return weights
 
     def train(self):
         if self.df is None:
@@ -47,7 +138,8 @@ class ModelTrainer:
         print("\n=== Model Evaluation (Ensemble Stacking 5-Fold CV) ===")
         ensemble = EnsembleStackingModel()
         
-        # Use sklearn's cross_val_score with the internal model
+        # Note: cross_val_score doesn't support sample_weight directly with StackingRegressor
+        # We'll evaluate without weights for CV, but train final model with weights
         r2_scores = cross_val_score(ensemble.model, X, y, cv=5, scoring='r2')
         mse_scores = -cross_val_score(ensemble.model, X, y, cv=5, scoring='neg_mean_squared_error')
         
@@ -58,9 +150,9 @@ class ModelTrainer:
         if r2_scores.mean() < 0:
             print("⚠️  警告: R² 为负，模型比平均值更差，数据可能有问题!")
         
-        print("\n=== Training Final Ensemble Stacking Model ===")
+        print("\n=== Training Final Ensemble Stacking Model (with sample weights) ===")
         final_model = EnsembleStackingModel()
-        final_model.fit(X, y, feature_cols=self.feature_cols)
+        final_model.fit(X, y, feature_cols=self.feature_cols, sample_weights=self.sample_weights)
         
         save_path = os.path.join(self.models_dir, "viability_model.joblib")
         final_model.save(save_path)
