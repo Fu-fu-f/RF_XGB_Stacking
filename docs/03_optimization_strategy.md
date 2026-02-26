@@ -38,7 +38,16 @@ While the AI knows about other cooling methods, we have **locked its suggestions
 Because of all these hard constraints (60% limit, Top-8 limit), the "landscape" of the math is very jagged. We use **Differential Evolution**.
 *   **Analogy**: Imagine dropping a hundred tiny robots across a map. They communicate with each other to find the highest mountain peak (the best EI score), rather than just looking at the ground beneath their feet.
 
-## 4. Batch Generation & Diversity
+## 4. Cold Start: Latin Hypercube Sampling (LHS)
+
+When the system is first set up, or when we have very little **Lab** data (less than 8 samples), model-based Bayesian optimization can be unreliable. In these cases, we use **LHS**.
+
+*   **The Problem**: If we only have literature data, the AI might get "stuck" in a region that worked for another lab but doesn't work for our specific cells or equipment.
+*   **The Solution (Space-Filling)**: LHS is a statistical method that generates a distribution of recipes that are elegantly spread out across the entire chemical space.
+*   **The Logic**: Imagine a Sudoku grid; LHS ensures that for every ingredient, we test a wide range of concentrations, and no two suggested recipes are too similar.
+*   **Transition**: Once we collect 8+ lab results, the system automatically switches from LHS (Pure Exploration) to Bayesian Optimization (Strategic Exploitation).
+
+## 5. Batch Generation & Diversity
 
 We generate 8 variants (#1 to #8) per run.
 *   **Deterministic Diversity**: Every variant uses a unique seed. This ensures you get a "Portfolio" of recipes—some are safe improvements, others are bold, "out-of-the-box" ideas.

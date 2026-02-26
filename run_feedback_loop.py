@@ -1,8 +1,9 @@
-#!/usr/bin/env python3
 import pandas as pd
 import os
 import subprocess
 import sys
+import shutil
+from datetime import datetime
 
 # --- Config ---
 RECIPE_FILE = 'latest_batch_recipes.csv'
@@ -15,6 +16,29 @@ def run_cmd(cmd):
         print(f"Error executing: {cmd}")
         return False
     return True
+
+def create_backup():
+    """Creates a timestamped backup of the raw data file in the backups/ directory."""
+    if not os.path.exists(RAW_DATA_FILE):
+        return
+    
+    backup_dir = 'backups'
+    if not os.path.exists(backup_dir):
+        os.makedirs(backup_dir)
+        
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_name = f"Cryopreservative_Data_2026_{timestamp}.csv.bak"
+    backup_path = os.path.join(backup_dir, backup_name)
+    
+    shutil.copy2(RAW_DATA_FILE, backup_path)
+    print(f"\n[BACKUP] Created: {backup_path}")
+    
+    # Keep only latest 10 backups
+    backups = sorted([os.path.join(backup_dir, f) for f in os.listdir(backup_dir) if f.endswith('.bak')])
+    if len(backups) > 10:
+        for old_backup in backups[:-10]:
+            os.remove(old_backup)
+            print(f"[BACKUP] Removed old: {old_backup}")
 
 def main_loop():
     while True:
@@ -42,6 +66,7 @@ def main_loop():
                 print("\nNo recipe file found. Please generate recipes first.")
                 continue
                 
+            create_backup()
             df = pd.read_csv(RECIPE_FILE)
             print("\n--- Inputting Lab Results ---")
             
@@ -78,6 +103,7 @@ def main_loop():
                 
         elif choice == '3':
             print("\n--- Executing Integrated Pipeline ---")
+            create_backup()
             if not run_cmd("python3 clean_data_llm.py"): continue
             if not run_cmd("python3 run_training.py"): continue
             if not run_cmd("python3 run_optimization.py"): continue

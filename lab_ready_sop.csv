@@ -1,97 +1,97 @@
 Recipe_ID,Step,Component,State,Action,Amount,Note
 1,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.4490 g,Target 423.3mm
-,3,sucrose,Solid,WEIGH,0.2734 g,Target 79.87mm
-,4,ectoin,Solid,WEIGH,0.8550 g,Target 8.55%
-,5,peg,Solid,WEIGH,0.7890 g,Target 7.89%
-,6,pvp,Solid,WEIGH,0.3520 g,Target 3.52%
-,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,8,glycerol,Liquid,ADD,180.8 uL,Mix gently
-,9,eg,Liquid,ADD,115.1 uL,Mix gently
-,10,fbs,Liquid,ADD,804.0 uL,Mix gently
+,2,sucrose,Solid,WEIGH,1.5278 g,Target 446.34mm
+,3,k2hpo4,Solid,WEIGH,0.6920 g,Target 397.26mm
+,4,trehalose,Solid,WEIGH,1.1344 g,Target 331.41mm
+,5,mgcl2,Solid,WEIGH,0.3081 g,Target 323.58mm
+,6,hes,Solid,WEIGH,1.9680 g,Target 19.68%
+,7,pvp,Solid,WEIGH,1.9070 g,Target 19.07%
+,8,ectoin,Solid,WEIGH,1.8890 g,Target 18.89%
+,9,mc,Solid,WEIGH,1.8030 g,Target 18.03%
+,10,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 2,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.6596 g,Target 484.83mm
-,3,kh2po4,Solid,WEIGH,0.1966 g,Target 144.49mm
-,4,k2hpo4,Solid,WEIGH,0.2174 g,Target 124.79mm
-,5,hsa,Solid,WEIGH,1.4160 g,Target 14.16%
-,6,mc,Solid,WEIGH,0.7300 g,Target 7.3%
-,7,pvp,Solid,WEIGH,0.4740 g,Target 4.74%
-,8,ectoin,Solid,WEIGH,0.4140 g,Target 4.14%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,10,fbs,Liquid,ADD,419.0 uL,Mix gently
+,2,kh2po4,Solid,WEIGH,0.5557 g,Target 408.33mm
+,3,hsa,Solid,WEIGH,1.4110 g,Target 14.11%
+,4,ectoin,Solid,WEIGH,1.3290 g,Target 13.29%
+,5,mc,Solid,WEIGH,1.0070 g,Target 10.07%
+,6,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,7,eg,Liquid,ADD,285.8 uL,Mix gently
+,8,glycerol,Liquid,ADD,359.3 uL,Mix gently
+,9,fbs,Liquid,ADD,861.0 uL,Mix gently
+,10,DMSO,Liquid,DROPWISE,596.6 uL,Slowly! Exothermic
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 3,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.3821 g,Target 403.77mm
-,3,kh2po4,Solid,WEIGH,0.3203 g,Target 235.38mm
-,4,ectoin,Solid,WEIGH,0.7370 g,Target 7.37%
-,5,peg,Solid,WEIGH,0.5080 g,Target 5.08%
-,6,mc,Solid,WEIGH,0.4620 g,Target 4.62%
-,7,pvp,Solid,WEIGH,0.3070 g,Target 3.07%
-,8,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,9,eg,Liquid,ADD,155.4 uL,Mix gently
-,10,fbs,Liquid,ADD,272.0 uL,Mix gently
+,2,mgcl2,Solid,WEIGH,0.4575 g,Target 480.48mm
+,3,k2hpo4,Solid,WEIGH,0.7948 g,Target 456.23mm
+,4,kh2po4,Solid,WEIGH,0.4395 g,Target 322.96mm
+,5,hes,Solid,WEIGH,1.4430 g,Target 14.43%
+,6,pvp,Solid,WEIGH,1.3910 g,Target 13.91%
+,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,8,glycerol,Liquid,ADD,449.5 uL,Mix gently
+,9,eg,Liquid,ADD,253.3 uL,Mix gently
+,10,DMSO,Liquid,DROPWISE,782.0 uL,Slowly! Exothermic
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 4,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,k2hpo4,Solid,WEIGH,0.3992 g,Target 229.15mm
-,3,mgcl2,Solid,WEIGH,0.1489 g,Target 156.38mm
-,4,sucrose,Solid,WEIGH,0.3503 g,Target 102.33mm
-,5,peg,Solid,WEIGH,0.9110 g,Target 9.11%
-,6,mc,Solid,WEIGH,0.7670 g,Target 7.67%
-,7,pvp,Solid,WEIGH,0.3960 g,Target 3.96%
-,8,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,9,glycerol,Liquid,ADD,265.5 uL,Mix gently
-,10,fbs,Liquid,ADD,1135.0 uL,Mix gently
+,2,sucrose,Solid,WEIGH,1.4359 g,Target 419.48mm
+,3,k2hpo4,Solid,WEIGH,0.5913 g,Target 339.45mm
+,4,trehalose,Solid,WEIGH,0.9237 g,Target 269.84mm
+,5,hsa,Solid,WEIGH,1.7480 g,Target 17.48%
+,6,ectoin,Solid,WEIGH,1.2210 g,Target 12.21%
+,7,pvp,Solid,WEIGH,1.0550 g,Target 10.55%
+,8,mc,Solid,WEIGH,0.8030 g,Target 8.03%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,eg,Liquid,ADD,149.8 uL,Mix gently
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 5,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.4649 g,Target 427.97mm
-,3,kh2po4,Solid,WEIGH,0.1451 g,Target 106.6mm
-,4,k2hpo4,Solid,WEIGH,0.1609 g,Target 92.37mm
-,5,ectoin,Solid,WEIGH,1.0260 g,Target 10.26%
-,6,hsa,Solid,WEIGH,0.9600 g,Target 9.6%
-,7,peg,Solid,WEIGH,0.6390 g,Target 6.39%
-,8,pvp,Solid,WEIGH,0.4350 g,Target 4.35%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,10,glycerol,Liquid,ADD,211.1 uL,Mix gently
+,2,trehalose,Solid,WEIGH,1.3339 g,Target 389.69mm
+,3,sucrose,Solid,WEIGH,1.1627 g,Target 339.67mm
+,4,mgcl2,Solid,WEIGH,0.2836 g,Target 297.88mm
+,5,pvp,Solid,WEIGH,1.6960 g,Target 16.96%
+,6,hes,Solid,WEIGH,1.2420 g,Target 12.42%
+,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,8,eg,Liquid,ADD,208.1 uL,Mix gently
+,9,glycerol,Liquid,ADD,255.9 uL,Mix gently
+,10,fbs,Liquid,ADD,1632.0 uL,Mix gently
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 6,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.6071 g,Target 469.51mm
-,3,kh2po4,Solid,WEIGH,0.3370 g,Target 247.61mm
-,4,sucrose,Solid,WEIGH,0.6312 g,Target 184.4mm
-,5,k2hpo4,Solid,WEIGH,0.3134 g,Target 179.9mm
-,6,hsa,Solid,WEIGH,0.7370 g,Target 7.37%
-,7,mc,Solid,WEIGH,0.4660 g,Target 4.66%
-,8,pvp,Solid,WEIGH,0.4280 g,Target 4.28%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,10,fbs,Liquid,ADD,341.0 uL,Mix gently
+,2,trehalose,Solid,WEIGH,1.5923 g,Target 465.19mm
+,3,kh2po4,Solid,WEIGH,0.2788 g,Target 204.85mm
+,4,peg,Solid,WEIGH,1.9940 g,Target 19.94%
+,5,mc,Solid,WEIGH,1.5460 g,Target 15.46%
+,6,pvp,Solid,WEIGH,0.9770 g,Target 9.77%
+,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,8,eg,Liquid,ADD,163.6 uL,Mix gently
+,9,fbs,Liquid,ADD,1927.0 uL,Mix gently
+,10,DMSO,Liquid,DROPWISE,714.9 uL,Slowly! Exothermic
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 7,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.7102 g,Target 499.62mm
-,3,hsa,Solid,WEIGH,0.9720 g,Target 9.72%
-,4,mc,Solid,WEIGH,0.9390 g,Target 9.39%
-,5,peg,Solid,WEIGH,0.5370 g,Target 5.37%
-,6,ectoin,Solid,WEIGH,0.5000 g,Target 5.0%
-,7,pvp,Solid,WEIGH,0.4030 g,Target 4.03%
-,8,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,9,eg,Liquid,ADD,83.2 uL,Mix gently
-,10,fbs,Liquid,ADD,483.0 uL,Mix gently
+,2,kh2po4,Solid,WEIGH,0.6209 g,Target 456.27mm
+,3,mgcl2,Solid,WEIGH,0.3589 g,Target 376.93mm
+,4,hes,Solid,WEIGH,1.7200 g,Target 17.2%
+,5,ectoin,Solid,WEIGH,1.5550 g,Target 15.55%
+,6,mc,Solid,WEIGH,1.4780 g,Target 14.78%
+,7,peg,Solid,WEIGH,1.2600 g,Target 12.6%
+,8,hsa,Solid,WEIGH,1.1600 g,Target 11.6%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,fbs,Liquid,ADD,1326.0 uL,Mix gently
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
 8,1,START,-,Prepare Tube,10.0mL scale,Clean environment
-,2,trehalose,Solid,WEIGH,1.6546 g,Target 483.38mm
-,3,mgcl2,Solid,WEIGH,0.0859 g,Target 90.22mm
-,4,ectoin,Solid,WEIGH,1.2260 g,Target 12.26%
-,5,pvp,Solid,WEIGH,0.4870 g,Target 4.87%
-,6,mc,Solid,WEIGH,0.4490 g,Target 4.49%
-,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,8,eg,Liquid,ADD,74.4 uL,Mix gently
-,9,glycerol,Liquid,ADD,96.4 uL,Mix gently
-,10,fbs,Liquid,ADD,385.0 uL,Mix gently
+,2,k2hpo4,Solid,WEIGH,0.4660 g,Target 267.53mm
+,3,sucrose,Solid,WEIGH,0.7975 g,Target 232.98mm
+,4,mgcl2,Solid,WEIGH,0.2123 g,Target 222.99mm
+,5,kh2po4,Solid,WEIGH,0.1906 g,Target 140.09mm
+,6,hsa,Solid,WEIGH,1.9490 g,Target 19.49%
+,7,peg,Solid,WEIGH,1.7060 g,Target 17.06%
+,8,pvp,Solid,WEIGH,0.5360 g,Target 5.36%
+,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,10,DMSO,Liquid,DROPWISE,910.4 uL,Slowly! Exothermic
 ,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
 ,,,,,,
