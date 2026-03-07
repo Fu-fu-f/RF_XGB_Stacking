@@ -70,7 +70,7 @@ def generate_sop(target_volume_ml=10.0):
         # 1. Preparation Note
         add_row('START', '-', 'Prepare Tube', f'{target_volume_ml}mL scale', 'Clean environment')
 
-        # 2. Add Powders
+        # 2. Add Powders (Mass only, no volume subtracted)
         for p in powders:
             if p['unit'] == 'mm':
                 mw = MW_MAP.get(p['name'], 100.0)
@@ -80,27 +80,44 @@ def generate_sop(target_volume_ml=10.0):
             
             add_row(p['name'], 'Solid', 'WEIGH', f'{grams:.4f} g', f"Target {p['val']}{p['unit']}")
 
-        # 3. Dissolve Step
-        add_row('Base Media', 'Liquid', 'ADD & DISSOLVE', f'~{target_volume_ml*0.7:.1f} mL', 'Vortex until clear')
-
-        # 4. Add Regular Liquids
+        # 3. Calculate Total Liquid Volume
+        total_liquid_ml = 0.0
+        calculated_liquids = []
+        
+        # Regular Liquids
         for l in liquids:
             if l['unit'] == 'mm':
                 mw = MW_MAP.get(l['name'], 78.0)
                 ml = (l['val'] * mw / 10000.0) * (target_volume_ml / 100.0)
             else: # %
                 ml = (l['val'] / 100.0) * target_volume_ml
-            
-            add_row(l['name'], 'Liquid', 'ADD', f'{ml*1000:.1f} uL', 'Mix gently')
+            total_liquid_ml += ml
+            calculated_liquids.append((l['name'], ml))
 
-        # 5. Add DMSO
+        # DMSO
+        dmso_ml = 0.0
         for d in dmso_list:
             mw = 78.13
             ml = (d['val'] * mw / 10000.0) * (target_volume_ml / 100.0)
-            add_row('DMSO', 'Liquid', 'DROPWISE', f'{ml*1000:.1f} uL', 'Slowly! Exothermic')
+            dmso_ml += ml
+        total_liquid_ml += dmso_ml
 
-        # 6. Final Top-up
-        add_row('Base Media', 'Liquid', 'TOP UP', f'To {target_volume_ml} mL', 'Line up the meniscus')
+        # 4. Add Buffer (Subtraction: Total - Liquid Sum)
+        buffer_ml = target_volume_ml - total_liquid_ml
+        # Ensure buffer is not negative (safety)
+        buffer_ml = max(0.0, buffer_ml)
+        add_row('Base Media', 'Liquid', 'ADD EXACT', f'{buffer_ml:.2f} mL', 'Vortex to dissolve powders')
+
+        # 5. Add Regular Liquids
+        for name, ml in calculated_liquids:
+            add_row(name, 'Liquid', 'ADD', f'{ml*1000:.1f} uL', 'Mix gently')
+
+        # 6. Add DMSO
+        if dmso_ml > 0:
+            add_row('DMSO', 'Liquid', 'DROPWISE', f'{dmso_ml*1000:.1f} uL', 'Slowly! Exothermic')
+
+        # Add an empty row for visual separation between recipes
+        sop_rows.append({k: "" for k in sop_rows[0].keys()})
 
         # Add an empty row for visual separation between recipes
         sop_rows.append({k: "" for k in sop_rows[0].keys()})

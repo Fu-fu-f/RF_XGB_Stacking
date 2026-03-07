@@ -104,3 +104,19 @@ If you notice a new experiment didn't get absorbed by the AI, check:
 1. Did you fill in the Viability number?
 2. Did you use a standard unit (% or mM)?
 3. Is your cooling rate description too vague?
+
+---
+
+## Development Meta: The Scientist's Instruction (Prompt)
+
+To build this pipeline, the following master instruction was provided to the Agentic IDE to ensure scientific rigor:
+
+> "Help me build `clean_data_llm.py`. The primary goal is to transform messy literature data into a standardized matrix for supervised learning. 
+> 1. **Implement a 'Zero-Tolerance' Rejection Protocol**: Automatically discard rows missing 'Viability' or labels with 'Commercial black-boxes' (e.g., CryoStor) where components are unknown. 
+> 2. **Apply Trace Ingredient Filtering**: If an ingredient concentration is below **0.0001% (1e-4%)** after conversion, reject the entire row as 'unreliable weighing noise'. 
+> 3. **Unify the Scientific Units**: This is critical. Use a **Hybrid System**:
+>    - **Small Molecules (Sugars, CPAs, Salts)**: Convert to **mM** using molecular weights (e.g., DMSO=78.13, Trehalose=342.3). Reason: They protect cells via colligative properties (number of molecules).
+>    - **Large Molecules (FBS, Proteins, Polymers)**: Convert to **%**. Reason: They protect via surface coverage and viscosity.
+> 4. **Alias & Buffer Map**: Map all synonyms (Me2SO/Dimso → DMSO; FCS/Serum → FBS). Implement a **Buffer Auto-Expansion library**: if you find a historical record of 'DPBS' salts, cache it and auto-fill it for future rows that only mention the shorthand.
+> 5. **Long-Tail Optimization**: To avoid 'miracle drugs' bias, keep only the **Top-15 most frequent ingredients** and drop any row containing rare chemicals not in this list."
+

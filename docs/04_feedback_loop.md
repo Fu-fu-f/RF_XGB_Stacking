@@ -67,3 +67,16 @@ Since `run_feedback_loop.py` edits your main CSV database directly:
 
 **💡 Advice for the Team:**
 Don't be discouraged if the AI's predicted score drops during a round. It often happens when the AI is taking you through a "Low-Score Minefield" (Exploration) to make sure there isn't a better path hidden elsewhere. Stick with the process—the model will bounce back stronger in the next iteration.
+
+---
+
+## Development Meta: The Scientist's Instruction (Prompt)
+
+The following instruction was used to build the laboratory feedback and SOP system:
+
+> "Implement run_feedback_loop.py and generate_sop.py to connect theoretical AI math to actual bench chemistry.
+> 1. Active Learning UI: Create a CLI for lab researchers. New results must be tagged as Source: Lab (High Trust) to prioritize them over noisy literature data.
+> 2. Precision SOP Conversion: Generate lab_ready_sop.csv. Calculate grams (for powders) and uL (for liquids) precisely for a target volume (e.g., 10mL).
+> 3. Scientific Preparation Sequence: Order the steps strictly: Powders First (for better dissolution) then 70% Media Addition then Regular Liquids then DMSO LAST. 
+> 4. Exothermic Safety: Force the SOP to print 'DROPWISE! Exothermic reaction' next to DMSO to prevent localized heating from damaging the formulation."
+

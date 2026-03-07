@@ -40,4 +40,17 @@ After running `python3 run_training.py`, the model is saved to `trained_models/v
 ---
 
 **💡 Advice for the Team:**
-The Stacking model is highly robust against outliers and noise common in literature data. Even a small number of high-quality lab results can significantly shift the "Final Estimator's" weights, pivoting the model toward accurate local optimization.
+The Stacking model is highly robust against outliers and noise common in literature data. Even a small number of high-quality lab results can significantly shift the Final Estimator's weights, pivoting the model toward accurate local optimization.
+
+---
+
+## Development Meta: The Scientist's Instruction (Prompt)
+
+The following scientific instruction guided the design of the predictive architecture:
+
+> "Design a ModelTrainer class in src/model_trainer.py. We need a robust brain that manages high-dimensional synergy.
+> 1. Stacking Ensemble: Combine Random Forest (RF) (for non-linear robustness) and XGBoost (for tabular precision). Use a Ridge Meta-Learner to learn the optimal weights of their advice.
+> 2. Capture Synergy: The model must capture interaction effects through tree-based logic (e.g., Trehalose effectiveness vs DMSO concentration range).
+> 3. Uncertainty via Disagreement (Sigma): Since tree models don't naturally output variance, calculate the standard deviation between the prediction of RF and XGBoost. High disagreement equals High Uncertainty. This metric will be the core of my Bayesian Expected Improvement (EI) search in the next phase.
+> 4. Output Safety: Ensure all viability predictions are clipped strictly between 0% and 100% to maintain scientific validity."
+

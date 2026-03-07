@@ -55,4 +55,18 @@ We generate 8 variants (#1 to #8) per run.
 ---
 
 **💡 Advice for the Team:**
-The AI isn't just picking what it thinks is "good." It’s picking what it thinks is **"knowledge-rich."** Even if a suggested recipe fails in the lab, that failure provides critical data that keeps the AI from making the same mistake twice. 
+The AI isn't just picking what it thinks is "good." It’s picking what it thinks is **"knowledge-rich."** Even if a suggested recipe fails in the lab, that failure provides critical data that keeps the AI from making the same mistake twice.
+
+---
+
+## Development Meta: The Scientist's Instruction (Prompt)
+
+The following instruction defines the boundaries and strategy for the optimization engine:
+
+> "Build run_optimization.py and the Recommender logic to transition from exploration to exploitation.
+> 1. Cold Start Strategy: Use Latin Hypercube Sampling (LHS) to evenly explore the chemical space if we have less than 8 Lab Samples. Switch to Bayesian Optimization via Expected Improvement (EI) once we have enough ground truth.
+> 2. Search Logic: Use Differential Evolution to maximize the EI score.
+> 3. Scientific Constraints (Hard Gating):
+>    - The 60% Red-Line Penalty: If the total concentration of all ingredients exceeds 60%, apply a massive penalty. This prevents osmotic shock, membrane toxicity, and unpipettable viscosity.
+>    - The Top-8 Lab Feasibility: Each suggested recipe must have exactly 8 ingredients. Implement a Gating System with Normalized Ranking to eliminate weak ingredients while preserving potent trace additives.
+>    - Safety Bounds: Lock DMSO at a 10% max cap and Sugars at 500mM."

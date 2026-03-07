@@ -8,20 +8,20 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,7,pvp,Solid,WEIGH,1.9070 g,Target 19.07%
 ,8,ectoin,Solid,WEIGH,1.8890 g,Target 18.89%
 ,9,mc,Solid,WEIGH,1.8030 g,Target 18.03%
-,10,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,10,Base Media,Liquid,ADD EXACT,10.00 mL,Vortex to dissolve powders
+,,,,,,
 ,,,,,,
 2,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,kh2po4,Solid,WEIGH,0.5557 g,Target 408.33mm
 ,3,hsa,Solid,WEIGH,1.4110 g,Target 14.11%
 ,4,ectoin,Solid,WEIGH,1.3290 g,Target 13.29%
 ,5,mc,Solid,WEIGH,1.0070 g,Target 10.07%
-,6,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,6,Base Media,Liquid,ADD EXACT,7.90 mL,Vortex to dissolve powders
 ,7,eg,Liquid,ADD,285.8 uL,Mix gently
 ,8,glycerol,Liquid,ADD,359.3 uL,Mix gently
 ,9,fbs,Liquid,ADD,861.0 uL,Mix gently
 ,10,DMSO,Liquid,DROPWISE,596.6 uL,Slowly! Exothermic
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 3,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,mgcl2,Solid,WEIGH,0.4575 g,Target 480.48mm
@@ -29,11 +29,11 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,4,kh2po4,Solid,WEIGH,0.4395 g,Target 322.96mm
 ,5,hes,Solid,WEIGH,1.4430 g,Target 14.43%
 ,6,pvp,Solid,WEIGH,1.3910 g,Target 13.91%
-,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,7,Base Media,Liquid,ADD EXACT,8.52 mL,Vortex to dissolve powders
 ,8,glycerol,Liquid,ADD,449.5 uL,Mix gently
 ,9,eg,Liquid,ADD,253.3 uL,Mix gently
 ,10,DMSO,Liquid,DROPWISE,782.0 uL,Slowly! Exothermic
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 4,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,sucrose,Solid,WEIGH,1.4359 g,Target 419.48mm
@@ -43,9 +43,9 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,6,ectoin,Solid,WEIGH,1.2210 g,Target 12.21%
 ,7,pvp,Solid,WEIGH,1.0550 g,Target 10.55%
 ,8,mc,Solid,WEIGH,0.8030 g,Target 8.03%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,9,Base Media,Liquid,ADD EXACT,9.85 mL,Vortex to dissolve powders
 ,10,eg,Liquid,ADD,149.8 uL,Mix gently
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 5,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,trehalose,Solid,WEIGH,1.3339 g,Target 389.69mm
@@ -53,11 +53,11 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,4,mgcl2,Solid,WEIGH,0.2836 g,Target 297.88mm
 ,5,pvp,Solid,WEIGH,1.6960 g,Target 16.96%
 ,6,hes,Solid,WEIGH,1.2420 g,Target 12.42%
-,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,7,Base Media,Liquid,ADD EXACT,7.90 mL,Vortex to dissolve powders
 ,8,eg,Liquid,ADD,208.1 uL,Mix gently
 ,9,glycerol,Liquid,ADD,255.9 uL,Mix gently
 ,10,fbs,Liquid,ADD,1632.0 uL,Mix gently
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 6,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,trehalose,Solid,WEIGH,1.5923 g,Target 465.19mm
@@ -65,11 +65,11 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,4,peg,Solid,WEIGH,1.9940 g,Target 19.94%
 ,5,mc,Solid,WEIGH,1.5460 g,Target 15.46%
 ,6,pvp,Solid,WEIGH,0.9770 g,Target 9.77%
-,7,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,7,Base Media,Liquid,ADD EXACT,7.19 mL,Vortex to dissolve powders
 ,8,eg,Liquid,ADD,163.6 uL,Mix gently
 ,9,fbs,Liquid,ADD,1927.0 uL,Mix gently
 ,10,DMSO,Liquid,DROPWISE,714.9 uL,Slowly! Exothermic
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 7,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,kh2po4,Solid,WEIGH,0.6209 g,Target 456.27mm
@@ -79,9 +79,9 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,6,mc,Solid,WEIGH,1.4780 g,Target 14.78%
 ,7,peg,Solid,WEIGH,1.2600 g,Target 12.6%
 ,8,hsa,Solid,WEIGH,1.1600 g,Target 11.6%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,9,Base Media,Liquid,ADD EXACT,8.67 mL,Vortex to dissolve powders
 ,10,fbs,Liquid,ADD,1326.0 uL,Mix gently
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
 8,1,START,-,Prepare Tube,10.0mL scale,Clean environment
 ,2,k2hpo4,Solid,WEIGH,0.4660 g,Target 267.53mm
@@ -91,7 +91,7 @@ Recipe_ID,Step,Component,State,Action,Amount,Note
 ,6,hsa,Solid,WEIGH,1.9490 g,Target 19.49%
 ,7,peg,Solid,WEIGH,1.7060 g,Target 17.06%
 ,8,pvp,Solid,WEIGH,0.5360 g,Target 5.36%
-,9,Base Media,Liquid,ADD & DISSOLVE,~7.0 mL,Vortex until clear
+,9,Base Media,Liquid,ADD EXACT,9.09 mL,Vortex to dissolve powders
 ,10,DMSO,Liquid,DROPWISE,910.4 uL,Slowly! Exothermic
-,11,Base Media,Liquid,TOP UP,To 10.0 mL,Line up the meniscus
+,,,,,,
 ,,,,,,
